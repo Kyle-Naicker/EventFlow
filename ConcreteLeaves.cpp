@@ -139,3 +139,49 @@ void CateringStation::reactToNotice(const Notice& notice) {
             break;
     }
 }
+
+ShuttleStop::ShuttleStop(const std::string& name,int capacity,bool indoors):EventUnit(name, capacity, indoors) {}
+
+void ShuttleStop::reactToNotice(const Notice& notice) {
+    switch(notice.type){
+        case NoticeType::VENUE_CHANGE:
+            route_="Rerouted: "+notice.message;
+            std::cout<<"  [ShuttleStop:"<<name_ <<"] route updated -> "<< route_<<"\n";
+            break;
+        case NoticeType::EVACUATE:
+            isPaused_=true;
+            std::cout<<"  [ShuttleStop:"<<name_<< "] pickups halted for evacuation\n";
+            break;
+        case NoticeType::PAUSE:
+         
+            std::cout<<"  [ShuttleStop:"<<name_<< "] continuing pickups despite pause\n";
+            break;
+        case NoticeType::RESUME:
+            isPaused_=false;
+            std::cout<<"  [ShuttleStop:"<<name_<< "] pickups resumed\n";
+            break;
+        default:
+            break;
+    }
+}
+
+
+MedicalStation::MedicalStation(const std::string& name,int capacity,bool indoors):EventUnit(name,capacity,indoors) {}
+
+void MedicalStation::reactToNotice(const Notice& notice) {
+    switch(notice.type){
+        case NoticeType::EVACUATE:
+            std::cout<<"  [MedicalStation:"<<name_<<"] remaining active, assisting evacuation\n";
+            break;
+        case NoticeType::POWER_OUTAGE:
+            std::cout<<"  [MedicalStation:"<<name_<<"] switched to backup battery, still operational\n";
+            break;
+        case NoticeType::CANCEL:
+            isOpen_=false;
+            std::cout<<"  [MedicalStation:"<<name_<<"] stood down (event cancelled)\n";
+            break;
+        default:
+            std::cout<<"  [MedicalStation:"<<name_<<"] remains operational\n";
+            break;
+    }
+}
