@@ -52,5 +52,23 @@ int main() {
     root->open();
 
 
+    control.issueNotice(Notice(NoticeType::OPEN, "Doors open for registration"));
+
+    control.issueNotice(Notice(NoticeType::SCHEDULE_CHANGE, "Keynote moved to 09:30"));
+
+    int threshold = 400;
+    int current = root->getCapacity();
+    if (current >= threshold) {
+        control.issueNotice(Notice(NoticeType::CAPACITY_ALERT,
+            "Conference-wide headcount at or above threshold", threshold));
+    } else {
+        std::cout << "\n(Capacity " << current << " below threshold " << threshold
+                  << " -- no CAPACITY_ALERT issued)\n";
+    }
+
+    control.issueNotice(Notice(NoticeType::PAUSE, "Severe weather warning issued"));
+    control.issueNotice(Notice(NoticeType::RESUME, "Weather warning lifted"));
+
+
     return 0;
 }
