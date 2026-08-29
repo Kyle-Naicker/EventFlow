@@ -41,5 +41,16 @@ int main() {
     root->add(innovationWing);
     root->add(exhibitionWing);
 
+
+    EventControl control("TechConnect 2026");
+    control.attach(root);
+
+    std::cout << "--- Initial structure (Composite traversal / query) ---\n";
+    root->reportStatus();
+    std::cout << "Aggregate conference capacity: " << root->getCapacity() << "\n";
+
+    root->open();
+
+
     return 0;
 }
