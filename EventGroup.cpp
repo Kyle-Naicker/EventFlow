@@ -52,3 +52,54 @@ void EventGroup::add(EventComponent* child){
         attach(asObserver);
     }
 }
+
+EventComponent* EventGroup::removeChild(EventComponent* child) {
+    // Manual linear search, find the index of the
+    // pointer we were asked to remove.
+    std::size_t foundIndex=children_.size();
+    for (std::size_t i=0;i<children_.size();++i) {
+        if (children_[i]==child) {
+            foundIndex=i;
+            break;
+        }
+    }
+    if(foundIndex==children_.size()) {
+        return nullptr; // Not found among this group's children.
+    }
+
+    Observer* asObserver=dynamic_cast<Observer*>(child);
+    if(asObserver) {
+        detach(asObserver);
+    }
+
+    // Manual erase-by-index.
+   
+    children_.erase(children_.begin()+static_cast<long>(foundIndex));
+    return child; 
+}
+
+void EventGroup::update(const Notice& notice) {
+    reactToNotice(notice);
+    // Cascade to our own observers (our children). This is what lets a
+    // notice travel EventControl -> root EventGroup -> child EventGroup
+    // -> leaf EventUnit 
+    notify(notice);
+}
+
+void EventGroup::reactToNotice(const Notice& notice) {
+    switch(notice.type) {
+        case NoticeType::OPEN:
+            isOpen_=true;
+            break;
+        case NoticeType::CLOSE:
+        case NoticeType::EVACUATE:
+        case NoticeType::CANCEL:
+            isOpen_=false;
+            break;
+        default:
+            break; 
+    }
+    std::cout<<"["<<name_<<"] received "<<noticeTypeName(notice.type)
+              <<" ("<<notice.message<<"), cascading to "<<observerCount()
+              <<" observer(s)\n";
+}
