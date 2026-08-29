@@ -87,3 +87,55 @@ void RegistrationDesk::reactToNotice(const Notice& notice) {
             break;
     }
 }
+
+ExhibitionBooth::ExhibitionBooth(const std::string& name,int capacity,bool indoors):EventUnit(name,capacity,indoors) {}
+void ExhibitionBooth::reactToNotice(const Notice& notice) {
+    switch(notice.type) {
+        case NoticeType::PAUSE:
+            isPaused_=true;
+            std::cout<<"  [ExhibitionBooth:"<< name_<< "] live demo suspended\n";
+            break;
+        case NoticeType::RESUME:
+            isPaused_=false;
+            std::cout<<"  [ExhibitionBooth:"<<name_<<"] live demo resumed\n";
+            break;
+        case NoticeType::CANCEL:
+            isOpen_=false;
+            std::cout<<"  [ExhibitionBooth:"<<name_<<"] booth packed down (event cancelled)\n";
+            break;
+        case NoticeType::EVACUATE:
+            isOpen_=false;
+            std::cout<<"  [ExhibitionBooth:"<<name_<< "] booth vacated\n";
+            break;
+        default:
+            break;
+    }
+}
+
+
+CateringStation::CateringStation(const std::string& name, int capacity, bool indoors):EventUnit(name, capacity, indoors) {}
+
+void CateringStation::reactToNotice(const Notice& notice) {
+    switch(notice.type) {
+        case NoticeType::POWER_OUTAGE:
+            coldMenuOnly_=true;
+            std::cout<<"  [CateringStation:"<<name_<<"] switching to cold-food fallback menu\n";
+            break;
+        case NoticeType::RESUME:
+            if(coldMenuOnly_){
+                coldMenuOnly_=false;
+                std::cout<<"  [CateringStation:"<<name_<<"] generator online, hot menu restored\n";
+            }else{
+                std::cout<<"  [CateringStation:"<<name_<<"] service resumed\n";
+            }
+            break;
+        case NoticeType::EVACUATE:
+        case NoticeType::CLOSE:
+        case NoticeType::CANCEL:
+            isOpen_=false;
+            std::cout<<"  [CateringStation:"<<name_<<"] service stopped\n";
+            break;
+        default:
+            break;
+    }
+}
