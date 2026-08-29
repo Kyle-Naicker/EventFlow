@@ -77,5 +77,17 @@ int main() {
     control.issueNotice(Notice(NoticeType::RESUME, "Generator online, full power restored"));
 
     
+    std::cout << "\n--- Runtime reorganisation: relocating Booth: CloudNova ---\n";
+    std::cout << "Before: Sponsor Zone has " << sponsorZone->childCount()
+              << " children, Exhibition Wing has " << exhibitionWing->childCount() << " children.\n";
+    EventComponent* relocatedBooth = sponsorZone->removeChild(boothA);
+    if (relocatedBooth) {
+        exhibitionWing->add(relocatedBooth);
+        std::cout << "Moved 'Booth: CloudNova' from Sponsor Zone directly under Exhibition Wing.\n";
+    }
+    std::cout << "After:  Sponsor Zone has " << sponsorZone->childCount()
+              << " children, Exhibition Wing has " << exhibitionWing->childCount() << " children.\n";
+
+
     return 0;
 }
