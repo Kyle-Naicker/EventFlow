@@ -70,5 +70,12 @@ int main() {
     control.issueNotice(Notice(NoticeType::RESUME, "Weather warning lifted"));
 
 
+    control.issueNotice(Notice(NoticeType::VENUE_CHANGE, "Shuttle loop moved to Gate 5 due to roadworks"));
+
+    control.issueNotice(Notice(NoticeType::POWER_OUTAGE, "Loadshedding stage 4 -- switching to generator"));
+    std::cout << "(...simulating a 5 minute wait while the generator starts...)\n";
+    control.issueNotice(Notice(NoticeType::RESUME, "Generator online, full power restored"));
+
+    
     return 0;
 }
