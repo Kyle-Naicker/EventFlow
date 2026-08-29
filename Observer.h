@@ -1,6 +1,8 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
+#include "Notice.h"
+
 class Observer {
     public:
         virtual ~Observer() {}
