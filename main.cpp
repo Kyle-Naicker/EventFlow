@@ -124,6 +124,7 @@ int main() {
     // in this automated demo; the RESUME below stands in for "5
     // minutes later" as documented in the design rationale.)
     control.issueNotice(Notice(NoticeType::POWER_OUTAGE, "Loadshedding stage 4 -- switching to generator"));
+    control.issueNotice(Notice(NoticeType::PAUSE, "Waiting for generator to kick-in..."));
     std::cout << "(...simulating a 5 minute wait while the generator starts...)\n";
     control.issueNotice(Notice(NoticeType::RESUME, "Generator online, full power restored"));
 
