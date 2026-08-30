@@ -99,7 +99,11 @@ void EventGroup::reactToNotice(const Notice& notice) {
         default:
             break; 
     }
-    std::cout<<"["<<name_<<"] received "<<noticeTypeName(notice.type)
-              <<" ("<<notice.message<<"), cascading to "<<observerCount()
-              <<" observer(s)\n";
+     std::cout << "[" << describeSubject() << "] received " << noticeTypeName(notice.type)
+              << " (" << notice.message << "), cascading to " << observerCount()
+              << " observer(s)\n";
+}
+
+std::string EventGroup::describeSubject() const {
+    return "EventGroup["+name_+"]";
 }

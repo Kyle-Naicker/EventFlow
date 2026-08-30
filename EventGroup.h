@@ -30,7 +30,7 @@
  *
  * This dual Observer/Subject role is exactly what lets a notice
  * originating at EventControl cascade through multiple composite levels
- * (Task 3.4): EventControl -> root EventGroup -> child EventGroup ->
+ * EventControl -> root EventGroup -> child EventGroup ->
  * leaf EventUnit.
  *
  * Ownership policy: adding a child to an EventGroup transfers
@@ -49,7 +49,7 @@
 class EventGroup: public EventComponent, public Observer, public Subject{
     public:
         /// @param name Display name of this group e.g. "Innovation Wing"
-        explicit EventGroup(const std::string& name);
+        EventGroup(const std::string& name);
 
         // cascading delete
         ~EventGroup() override;
@@ -90,6 +90,9 @@ class EventGroup: public EventComponent, public Observer, public Subject{
 
         /// @param notice The notice pushed from a parent Subject.
         void update(const Notice& notice) override;
+
+        /// @return A short label identifying this group.
+        std::string describeSubject() const override;
 
     protected:
         /**
