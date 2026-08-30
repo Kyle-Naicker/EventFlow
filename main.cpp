@@ -89,5 +89,14 @@ int main() {
               << " children, Exhibition Wing has " << exhibitionWing->childCount() << " children.\n";
 
 
+    std::cout << "\n--- Registration change: Medical Post 1 now also observes EventControl directly ---\n";
+    control.attach(medic);
+    control.issueNotice(Notice(NoticeType::EVACUATE, "Evacuation drill: south exit"));
+    std::cout << "Medical Post 1 received this notice twice: once cascaded via its zone, "
+                 "once directly from EventControl -- demonstrating attach() allows an "
+                 "observer to register with more than one subject.\n";
+    control.detach(medic);
+    
+
     return 0;
 }
