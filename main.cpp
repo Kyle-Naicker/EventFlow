@@ -7,11 +7,9 @@
  * a registration change; aComposite traversal/query; a runtime reorganisation; 
  * and clean shutdown.
  *
- * Memory management note: this project does not use the memory or
- * algorithm standard headers, so ownership is entirely explicit. Every EventComponent created with
- * `new` is add()ed to exactly one owning EventGroup, which will later
- * `delete` it (directly or transitively) in its destructor. The only
- * pointer this file itself ever `delete`s directly is `root`.
+ * Every EventComponent created with new is add()ed to exactly one owning 
+ * EventGroup, which will later delete it (directly or transitively) in its 
+ * destructor. The only pointer this file itself ever `delete`s directly is root.
  */
 #include <iostream>
 #include "EventGroup.h"
