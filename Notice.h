@@ -17,14 +17,14 @@
 enum class NoticeType {
     OPEN,                   ///< An area should open for business
     CLOSE,                  ///< An area should close
-    SCHEDULE_CHANGE,        ///< A schedule change has occured
     CAPACITY_ALERT,         ///< A capacity threshold has been reached
+    WEATHER_ALERT,          ///< A weather alert has been issued
     PAUSE,                  ///< Activity should pause
     RESUME,                 ///< A previously paused activity may resume
     EVACUATE,               ///< Attendees must evacuate the affected area
-    VENUE_CHANGE,           ///< The Venue of the event changed
     POWER_OUTAGE,           ///< Loadshedding or power outage in progress
-    CANCEL                  ///< The event is cancelled
+    CANCEL,                 ///< The event is cancelled
+    ANNOUNCEMENT            ///< A general announcement
 };
 
 /**
@@ -45,7 +45,7 @@ struct Notice {
     std::string message;            ///< Detail for Logging/UI
     int capacityThreshold = -1;     ///< -1 if unused
     /// Default-constructor
-    Notice() : type(NoticeType::SCHEDULE_CHANGE), message(""), capacityThreshold(-1){}
+    Notice() : type(NoticeType::CAPACITY_ALERT), message(""), capacityThreshold(-1){}
     /**
      * @param[in] t Kind of notice
      * @param[in] msg Detail for logging/UI
