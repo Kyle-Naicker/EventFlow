@@ -19,3 +19,10 @@ void Subject::detach(Observer* observer){
         }
     }
 }
+
+void Subject::notify(const Notice& notice){
+    std::vector<Observer*> snapshot = observers_;
+    for (Observer* obs : snapshot){
+        obs->update(notice);
+    }
+}
