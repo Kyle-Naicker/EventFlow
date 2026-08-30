@@ -87,7 +87,7 @@ class EventUnit:public EventComponent,public Observer{
         virtual std::string statusLine() const;
 
         bool indoors_;
-        bool isPaused=false;
+        bool isPaused_=false;
         int capacity_=0;
 }
 #endif

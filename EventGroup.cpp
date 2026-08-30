@@ -90,12 +90,16 @@ void EventGroup::reactToNotice(const Notice& notice) {
     switch(notice.type) {
         case NoticeType::OPEN:
             isOpen_=true;
+            std::cout<<"  ["<<name_<<"] opened\n";
             break;
         case NoticeType::CLOSE:
-        case NoticeType::EVACUATE:
-        case NoticeType::CANCEL:
             isOpen_=false;
+            std::cout<<"  ["<<name_<<"] closed\n";
             break;
+
+        // CAPACITY_ALERT
+        // ANNOUNCEMENT
+
         default:
             break; 
     }

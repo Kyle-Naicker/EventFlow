@@ -70,14 +70,14 @@ class RegistrationDesk: public EventUnit{
  * @brief A sponsor/exhibition booth. Suspends live demos on PAUSE but, unlike a LectureHall, fully packs down (closes) on CANCEL 
  *        rather than just pausing.
  */
-class ExhibitonBooth: public EventUnit{
+class ExhibitionBooth: public EventUnit{
     public:
      /**
      * @param name Display name of this unit.
      * @param capacity Attendee capacity of this unit.
      * @param indoors Whether this unit is physically indoors.
      */
-        ExhibitonBooth(const std::string& name, int capacity,bool indoors=true);
+        ExhibitionBooth(const std::string& name, int capacity,bool indoors=true);
 
     protected:
         void reactToNotice(const Notice& notice) override;
@@ -133,7 +133,7 @@ class MedicalStation:public EventUnit{
      * @param capacity Attendee capacity of this unit.
      * @param indoors Whether this unit is physically indoors.
      */
-        LectureHall(const std::string& name, int capacity, bool indoors=true);
+        MedicalStation(const std::string& name, int capacity, bool indoors = true);
 
     protected:
         void reactToNotice(const Notice& notice) override;
