@@ -1,8 +1,28 @@
+/**
+ * @brief build and run a coherent event simulation for TechConnect, 
+ *        a technology conference. 
+ * 
+ * Demonstrates: construction of the Composite; observer registration; 
+ * at least three different notices; at least one cascading notification; 
+ * a registration change; aComposite traversal/query; a runtime reorganisation; 
+ * and clean shutdown.
+ *
+ * Memory management note: this project does not use the memory or
+ * algorithm standard headers, so ownership is entirely explicit. Every EventComponent created with
+ * `new` is add()ed to exactly one owning EventGroup, which will later
+ * `delete` it (directly or transitively) in its destructor. The only
+ * pointer this file itself ever `delete`s directly is `root`.
+ */
 #include <iostream>
 #include "EventGroup.h"
 #include "ConcreteLeaves.h"
 #include "EventControl.h"
 
+/**
+ * @brief Testing all code implemented in the EventFlow project.
+ * 
+ * @return 0 on successful completion.
+ */
 int main() {
     std::cout << "############################################\n";
     std::cout << "#   TechConnect -- EventFlow Simulation     #\n";
