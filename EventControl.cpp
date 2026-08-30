@@ -6,3 +6,7 @@ void EventControl::issueNotice(const Notice& notice){
     << notice.message << "\n";
     notify(notice);
 }
+
+std::string EventControl::describeSubject() const {
+    return "EventControl[" + eventName_ + "]";
+}

@@ -19,11 +19,10 @@
  * through the whole tree.
 */
 
-
 class EventControl : public Subject {
     public:
         /// @param[in] eventName Name of the overall event, this control centre runs
-        explicit EventControl(const std::string& eventName) : eventName_(eventName){}
+        EventControl(const std::string& eventName) : eventName_(eventName){}
         /// @return The name of the overall event this control center runs.
         const std::string& getEventName() const { return eventName_;}
         /**
@@ -32,6 +31,8 @@ class EventControl : public Subject {
          * @param[in] notice The notice to issue
          */
         void issueNotice(const Notice& notice);
+        /// @return A short label identifying this control center
+        std::string describeSubject() const override;
     private:
         std::string eventName_; ///< Name of the overall event
 };

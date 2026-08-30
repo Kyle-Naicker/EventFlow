@@ -42,6 +42,13 @@ class Subject {
         /// @return The number of currently registered observers
         std::size_t observerCount() const {return observers_.size();}
 
+        /**
+         * @brief Returns a short, label identifying this concrete Subject or used in status/log output
+         * 
+         * @return A short label identifying this Subject
+         */
+        virtual std::string describeSubject() const = 0;
+
     protected:
         std::vector<Observer*> observers_;///< Non-owning registration list
 };
