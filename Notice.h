@@ -16,6 +16,8 @@ enum class NoticeType {
     CANCEL
 };
 
+const char* noticeTypeName(NoticeType type);
+
 struct Notice {
     NoticeType type;
     std::string message;
