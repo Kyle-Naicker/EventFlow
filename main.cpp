@@ -96,7 +96,21 @@ int main() {
                  "once directly from EventControl -- demonstrating attach() allows an "
                  "observer to register with more than one subject.\n";
     control.detach(medic);
-    
+
+
+    control.issueNotice(Notice(NoticeType::CANCEL, "Remainder of the day's programme cancelled"));
+
+    std::cout << "\n--- Final structure before shutdown ---\n";
+    root->reportStatus();
+
+    std::cout << "\n--- Clean shutdown: destroying root ---\n";
+    root->close();
+    control.detach(root);
+    delete root;
+
+    std::cout << "\nSimulation complete. No leaks: every EventComponent was owned by "
+                 "exactly one EventGroup at a time, all reachable from 'root'.\n";
+
 
     return 0;
 }
