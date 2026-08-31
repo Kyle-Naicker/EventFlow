@@ -1,0 +1,135 @@
+\doxysection{Event\+Control Class Reference}
+\hypertarget{classEventControl}{}\label{classEventControl}\index{EventControl@{EventControl}}
+
+
+The event-\/level coordinator that originates notices.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Control.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Control\+:
+% FIG 0
+
+
+Collaboration diagram for Event\+Control\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventControl_a011f1abae88ba16e085129f9d45c1690}{Event\+Control}} (const std\+::string \&event\+Name)
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventControl_ac4a342c05aaa6f026327bbbd60ed2860}{get\+Event\+Name}} () const
+\item 
+void \mbox{\hyperlink{classEventControl_ac21db8f4791c306a2b214309b4e400e6}{issue\+Notice}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Issues a notice to the whole event, for example, broadcasts it to every currently attached observer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventControl_ae717b0c502163a119760a194b5883d0c}{issue\+Direct\+Notice}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}target, const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Sends a notice directly to one specific \doxylink{classObserver}{Observer} without going through this control centre\textquotesingle{}s own registration list. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEventControl_a721a96624d2edab9cce485624c263dbb}{describe\+Subject}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSubject}{Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Subject} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for a polymorphic base. A Destructor doesn\textquotesingle{}t own its observers. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a0884bfe374d352c6488a1e40c84246c8}{attach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Registers an observer for future notices Stores a non-\/owning pointer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a752a7596d52ab986539232f8377ca92c}{detach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Deregisters an observer so it no longer receives notices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Pushes a notice to every currently registered observer. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b}{observer\+Count}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSubject}{Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries observers\+\_\+}
+\begin{DoxyCompactList}\small\item\em Non-\/owning registration list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The event-\/level coordinator that originates notices. 
+
+\doxylink{classEventControl}{Event\+Control} is deliberately not part of the Composite tree (Explained in Task 11\+: "{}\+Is Event\+Control itself part of the Composite or only a Subject/client collaborator"{}). Represents the human control-\/room staff issuing istructions. It is a concrete \doxylink{classSubject}{Subject}\+: whatever top-\/level Event\+Group/s are attached to it will receive and cascade its notices down through the whole tree. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEventControl_a011f1abae88ba16e085129f9d45c1690}\label{classEventControl_a011f1abae88ba16e085129f9d45c1690} 
+\index{EventControl@{EventControl}!EventControl@{EventControl}}
+\index{EventControl@{EventControl}!EventControl@{EventControl}}
+\doxysubsubsection{\texorpdfstring{EventControl()}{EventControl()}}
+{\footnotesize\ttfamily Event\+Control\+::\+Event\+Control (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event\+Name} & Name of the overall event, this control centre runs \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEventControl_a721a96624d2edab9cce485624c263dbb}\label{classEventControl_a721a96624d2edab9cce485624c263dbb} 
+\index{EventControl@{EventControl}!describeSubject@{describeSubject}}
+\index{describeSubject@{describeSubject}!EventControl@{EventControl}}
+\doxysubsubsection{\texorpdfstring{describeSubject()}{describeSubject()}}
+{\footnotesize\ttfamily std\+::string Event\+Control\+::describe\+Subject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+A short label identifying this control center 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9}{Subject}}.
+
+\Hypertarget{classEventControl_ac4a342c05aaa6f026327bbbd60ed2860}\label{classEventControl_ac4a342c05aaa6f026327bbbd60ed2860} 
+\index{EventControl@{EventControl}!getEventName@{getEventName}}
+\index{getEventName@{getEventName}!EventControl@{EventControl}}
+\doxysubsubsection{\texorpdfstring{getEventName()}{getEventName()}}
+{\footnotesize\ttfamily const std\+::string \& Event\+Control\+::get\+Event\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+The name of the overall event this control center runs. 
+\end{DoxyReturn}
+\Hypertarget{classEventControl_ae717b0c502163a119760a194b5883d0c}\label{classEventControl_ae717b0c502163a119760a194b5883d0c} 
+\index{EventControl@{EventControl}!issueDirectNotice@{issueDirectNotice}}
+\index{issueDirectNotice@{issueDirectNotice}!EventControl@{EventControl}}
+\doxysubsubsection{\texorpdfstring{issueDirectNotice()}{issueDirectNotice()}}
+{\footnotesize\ttfamily void Event\+Control\+::issue\+Direct\+Notice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}}]{target,  }\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})}
+
+
+
+Sends a notice directly to one specific \doxylink{classObserver}{Observer} without going through this control centre\textquotesingle{}s own registration list. 
+
+This is how Event\+Flow supports targeting one particular part of the venue instead of always cascading from the root
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em target} & The specific observer to notify. Must not be nullptr. \\
+\hline
+\mbox{\texttt{ in}}  & {\em notice} & The notice to deliver. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventControl_ac21db8f4791c306a2b214309b4e400e6}\label{classEventControl_ac21db8f4791c306a2b214309b4e400e6} 
+\index{EventControl@{EventControl}!issueNotice@{issueNotice}}
+\index{issueNotice@{issueNotice}!EventControl@{EventControl}}
+\doxysubsubsection{\texorpdfstring{issueNotice()}{issueNotice()}}
+{\footnotesize\ttfamily void Event\+Control\+::issue\+Notice (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})}
+
+
+
+Issues a notice to the whole event, for example, broadcasts it to every currently attached observer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notice} & The notice to issue \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{EventControl_8h}{Event\+Control.\+h}}\item 
+Event\+Control.\+cpp\end{DoxyCompactItemize}

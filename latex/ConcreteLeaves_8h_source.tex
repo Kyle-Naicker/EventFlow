@@ -1,0 +1,71 @@
+\doxysection{Concrete\+Leaves.\+h}
+\hypertarget{ConcreteLeaves_8h_source}{}\label{ConcreteLeaves_8h_source}\mbox{\hyperlink{ConcreteLeaves_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ CONCRETELEAVES\_H}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CONCRETELEAVES\_H}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventUnit_8h}{EventUnit.h}}"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLectureHall}{LectureHall}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLectureHall}{LectureHall}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLectureHall_a0eaac42fd8dfc62c807de96ad9df3356}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWorkshopRoom}{WorkshopRoom}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \mbox{\hyperlink{classWorkshopRoom}{WorkshopRoom}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWorkshopRoom_a275c8ea33d0f110bdace07bd20be7da6}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRegistrationDesk}{RegistrationDesk}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRegistrationDesk}{RegistrationDesk}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRegistrationDesk_a88563ba22df24958cd9a56a3e9c3c1eb}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00093\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classExhibitionBooth}{ExhibitionBooth}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classExhibitionBooth}{ExhibitionBooth}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classExhibitionBooth_a2c97bed7ae5d663528db6a55d02a332c}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00106\ \};}
+\DoxyCodeLine{00114\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCateringStation}{CateringStation}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCateringStation}{CateringStation}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCateringStation_ad62b19ce2e35221aaae9a53f0dfe334f}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ coldMenuOnly\_=\textcolor{keyword}{false};\ }
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShuttleStop}{ShuttleStop}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \mbox{\hyperlink{classShuttleStop}{ShuttleStop}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classShuttleStop_a064a230254bdeb7abe98438637cc7006}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMedicalStation}{MedicalStation}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classEventUnit}{EventUnit}}\{}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \mbox{\hyperlink{classMedicalStation}{MedicalStation}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors\ =\ \textcolor{keyword}{true},\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMedicalStation_a5bec95ea48d20064d78c48a816450b6e}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00178\ \};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

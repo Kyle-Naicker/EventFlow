@@ -1,0 +1,25 @@
+\doxysection{Event\+Control.\+h}
+\hypertarget{EventControl_8h_source}{}\label{EventControl_8h_source}\mbox{\hyperlink{EventControl_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ EVENTCONTROL\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ EVENTCONTROL\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Subject_8h}{Subject.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Notice_8h}{Notice.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventControl}{EventControl}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSubject}{Subject}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventControl_a011f1abae88ba16e085129f9d45c1690}{EventControl}}(\textcolor{keyword}{const}\ std::string\&\ eventName)\ :\ eventName\_(eventName)\{\}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEventControl_ac4a342c05aaa6f026327bbbd60ed2860}{getEventName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ eventName\_;\}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventControl_ac21db8f4791c306a2b214309b4e400e6}{issueNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventControl_ae717b0c502163a119760a194b5883d0c}{issueDirectNotice}}(\mbox{\hyperlink{classObserver}{Observer}}*\ target,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classEventControl_a721a96624d2edab9cce485624c263dbb}{describeSubject}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::string\ eventName\_;\ }
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

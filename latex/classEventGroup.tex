@@ -1,0 +1,322 @@
+\doxysection{Event\+Group Class Reference}
+\hypertarget{classEventGroup}{}\label{classEventGroup}\index{EventGroup@{EventGroup}}
+
+
+A grouping/area of the conference (e.\+g. a wing or a zone) that contains other Event\+Components.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Group.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Group\+:
+% FIG 0
+
+
+Collaboration diagram for Event\+Group\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventGroup_a9e6beddac67547e8a5dc01d75f715ae4}{Event\+Group}} (const std\+::string \&name, const std\+::string \&start\+Time="{}"{}, const std\+::string \&end\+Time="{}"{})
+\item 
+\mbox{\hyperlink{classEventGroup_a31ced71b330f350837e4dda2f461b94d}{\texorpdfstring{$\sim$}{\string~}\+Event\+Group}} () override
+\item 
+void \mbox{\hyperlink{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}{open}} () override
+\begin{DoxyCompactList}\small\item\em Opens this part of the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventGroup_a600460d78e6fc8d0ec13b1767590dcc9}{close}} () override
+\begin{DoxyCompactList}\small\item\em Closes this part of the event. See \doxylink{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}{open()} for the structural-\/vs-\/notification distinction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventGroup_a951b8bc146bba6a2ecf73aef6f949ba9}{report\+Status}} (int indent=0) const override
+\begin{DoxyCompactList}\small\item\em Prints a human-\/readable status report for this component, recursively including any children. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventGroup_affe035069afc221547fe9e848017ee3c}{get\+Capacity}} () const override
+\begin{DoxyCompactList}\small\item\em Computes the capacity of this component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add}} (\mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child to this group, taking ownership of it, and automatically registers it as an observer of this group. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEventGroup_abe700d722780eb0496cd28ad5822dedb}{remove\+Child}} (\mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child from this group by pointer identity, releasing ownership to the caller (the caller now becomes responsible for either \doxylink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add()}ing it to another \doxylink{classEventGroup}{Event\+Group} or explicitly deleting it) and detaching it as an observer of this group. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classEventGroup_ab6d615a76da04f466ce5713bc12e0ea4}{child\+Count}} () const
+\item 
+void \mbox{\hyperlink{classEventGroup_a49dd237deffcde74961175a84a7c0256}{update}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice) override
+\begin{DoxyCompactList}\small\item\em Reacts to a notice pushed from a parent \doxylink{classSubject}{Subject}, then cascades it to this group\textquotesingle{}s own observers (its children). This is the "{}receives from above, notifies below"{} behaviour required by Task 3.\+4. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEventGroup_aad4aea60d542f6e1d773d3c1ae16c5fa}{describe\+Subject}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventComponent_a5ddacaca4a90926891cbee8068d11007}{Event\+Component}} (const std\+::string \&name, const std\+::string \&start\+Time="{}"{}, const std\+::string \&end\+Time="{}"{})
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event\+Component} ()
+\begin{DoxyCompactList}\small\item\em Every polymorphic base in Event\+Flow has a virtual destructor. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_a78f3480318e1019f76fe73e02461f260}{get\+Name}} () const
+\item 
+bool \mbox{\hyperlink{classEventComponent_a41d0483abfcb7cbfd8cf53a77e141c2f}{is\+Open}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_a5c8bb5432315af9b32fad216859118cf}{get\+Start\+Time}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_afddac03fdc96231927b9978fc39b3f45}{get\+End\+Time}} () const
+\item 
+void \mbox{\hyperlink{classEventComponent_a9d7b8e680b18e307f48da0b0aa3a7b68}{set\+Current\+Attendance}} (int count)
+\begin{DoxyCompactList}\small\item\em Records how many attendees are currently present at this component. Simulates a headcount feed (e.\+g. a door counter); called by the client, not derived from any \doxylink{structNotice}{Notice}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventComponent_a9a06402637204177a3641e73171c3069}{get\+Current\+Attendance}} () const
+\item 
+void \mbox{\hyperlink{classEventComponent_aecebf59592950c18a2ebc9430533b390}{set\+Capacity\+Threshold}} (int threshold)
+\begin{DoxyCompactList}\small\item\em Sets the attendance figure at which this component should treat itself as full when it next reacts to a CAPACITY\+\_\+\+ALERT. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventComponent_aafb5e33e092802a7f6a57b508a1b79b9}{get\+Capacity\+Threshold}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObserver}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Vitual destructor for a polymorphic base. Observers do not own. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSubject}{Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Subject} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for a polymorphic base. A Destructor doesn\textquotesingle{}t own its observers. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a0884bfe374d352c6488a1e40c84246c8}{attach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Registers an observer for future notices Stores a non-\/owning pointer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a752a7596d52ab986539232f8377ca92c}{detach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Deregisters an observer so it no longer receives notices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Pushes a notice to every currently registered observer. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b}{observer\+Count}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classEventGroup_a5da833b62ccc17d9a9e33139e869f39e}{react\+To\+Notice}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Self-\/reaction hook, analogous to \doxylink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{Event\+Unit\+::react\+To\+Notice} but for group-\/level state (kept separate from cascading in \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEventComponent_a9825b3edb52b95f7e7aa4264a025f1a8}{report\+Capacity\+Alert}} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Shared CAPACITY\+\_\+\+ALERT reaction, used by every concrete \doxylink{classEventComponent}{Event\+Component} (both Leaves and Composites) so that "{}\+OPEN,        CLOSE, CAPACITY\+\_\+\+ALERT and EVACUATE affect all        Event\+Components"{} does not require duplicating the same comparison-\/and-\/print logic in seven leaf classes plus \doxylink{classEventGroup}{Event\+Group}. Compares current\+Attendance\+\_\+ against capacity\+Threshold\+\_\+ and logs "{}\+VENUE FULL"{} or a "{}not yet        full"{} status; does nothing if threshold-\/tracking is disabled (capacity\+Threshold\+\_\+ \texorpdfstring{$<$}{<} 0). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventComponent_ab4e7ce56f8c8e46519faa3eb8664d436}{update\+Schedule}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice, const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Shared SCHEDULE\+\_\+\+CHANGE reaction\+: updates start\+Time\+\_\+/ end\+Time\+\_\+ from {\ttfamily notice} (leaving either unchanged if the corresponding field on the notice is empty) and logs the old and new schedule. Only called by the four leaf types SCHEDULE\+\_\+\+CHANGE actually affects (\doxylink{classLectureHall}{Lecture\+Hall}, \doxylink{classWorkshopRoom}{Workshop\+Room}, \doxylink{classRegistrationDesk}{Registration\+Desk}, \doxylink{classExhibitionBooth}{Exhibition\+Booth}) -- \doxylink{classEventGroup}{Event\+Group} and the remaining leaf types simply never call it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEventComponent_a4c56450e43891bb458a2297b9f828563}{is\+At\+Or\+Over\+Capacity\+Threshold}} () const
+\begin{DoxyCompactList}\small\item\em True once current\+Attendance\+\_\+ has reached or exceeded capacity\+Threshold\+\_\+ (and threshold-\/tracking is enabled). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\begin{DoxyCompactList}\small\item\em Display name of this component. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Open\+\_\+} = false
+\begin{DoxyCompactList}\small\item\em Whether this component currently considers itself open. \end{DoxyCompactList}\item 
+std\+::string {\bfseries start\+Time\+\_\+}
+\begin{DoxyCompactList}\small\item\em Scheduled start time for this component. \end{DoxyCompactList}\item 
+std\+::string {\bfseries end\+Time\+\_\+}
+\begin{DoxyCompactList}\small\item\em Scheduled end time for this component. \end{DoxyCompactList}\item 
+int {\bfseries current\+Attendance\+\_\+} = 0
+\begin{DoxyCompactList}\small\item\em Most recently recorded headcount. \end{DoxyCompactList}\item 
+int {\bfseries capacity\+Threshold\+\_\+} = -\/1
+\begin{DoxyCompactList}\small\item\em Attendance that counts as "{}full"{}; -\/1 = not tracked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSubject}{Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries observers\+\_\+}
+\begin{DoxyCompactList}\small\item\em Non-\/owning registration list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A grouping/area of the conference (e.\+g. a wing or a zone) that contains other Event\+Components. 
+
+GoF roles\+:
+\begin{DoxyItemize}
+\item Composite pattern\+: \doxylink{classEventGroup}{Event\+Group} is the Composite. It owns its children through explicitly-\/owned raw pointers, and recursively implements \doxylink{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}{open()}/close()/report\+Status()/get\+Capacity() by delegating to them.
+\item \doxylink{classObserver}{Observer} pattern, \doxylink{classObserver}{Observer} role\+: an \doxylink{classEventGroup}{Event\+Group} can be attached to a parent \doxylink{classSubject}{Subject} (either another \doxylink{classEventGroup}{Event\+Group} or the root \doxylink{classEventControl}{Event\+Control}) so it hears about notices from above.
+\item \doxylink{classObserver}{Observer} pattern, \doxylink{classSubject}{Subject} role\+: an \doxylink{classEventGroup}{Event\+Group} is also a \doxylink{classSubject}{Subject} to its own children -- when it hears a notice, it both reacts itself and cascades the notice to every child registered as its observer.
+\end{DoxyItemize}
+
+This dual Observer/\+Subject role is exactly what lets a notice originating at \doxylink{classEventControl}{Event\+Control} cascade through multiple composite levels \doxylink{classEventControl}{Event\+Control} -\/\texorpdfstring{$>$}{>} root \doxylink{classEventGroup}{Event\+Group} -\/\texorpdfstring{$>$}{>} child \doxylink{classEventGroup}{Event\+Group} -\/\texorpdfstring{$>$}{>} leaf \doxylink{classEventUnit}{Event\+Unit}.
+
+Ownership policy\+: adding a child to an \doxylink{classEventGroup}{Event\+Group} transfers ownership to that \doxylink{classEventGroup}{Event\+Group} {\itshape and} automatically registers the child as an observer of this group. Event\+Flow does not use smart pointers (see project constraints); instead \doxylink{classEventGroup}{Event\+Group} owns its children through plain \textquotesingle{}Event\+Component\texorpdfstring{$\ast$}{*}\textquotesingle{} stored in a \textquotesingle{}std\+::vector\textquotesingle{}, and \textquotesingle{}\doxylink{classEventGroup_a31ced71b330f350837e4dda2f461b94d}{\texorpdfstring{$\sim$}{\string~}\+Event\+Group()}\textquotesingle{} explicitly \textquotesingle{}delete\textquotesingle{}s each one exactly once. The two relationships -- ownership and registration -- are coupled deliberately here\+: anything physically inside a group should, by default, hear about notices that affect the group. (Task 11\+: "{}does every Composite observe its parent, does every child get auto-\/registered"{} -- see design rationale for the justification of this coupling, and for why it is {\itshape not} the only possible design.) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEventGroup_a9e6beddac67547e8a5dc01d75f715ae4}\label{classEventGroup_a9e6beddac67547e8a5dc01d75f715ae4} 
+\index{EventGroup@{EventGroup}!EventGroup@{EventGroup}}
+\index{EventGroup@{EventGroup}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{EventGroup()}{EventGroup()}}
+{\footnotesize\ttfamily Event\+Group\+::\+Event\+Group (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{start\+Time = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{end\+Time = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Display name of this group (e.\+g. "{}\+Keynote Zone"{}). \\
+\hline
+{\em start\+Time} & Scheduled start time for this group\textquotesingle{}s programme, e.\+g. "{}09\+:00"{}. \\
+\hline
+{\em end\+Time} & Scheduled end time for this group\textquotesingle{}s programme. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventGroup_a31ced71b330f350837e4dda2f461b94d}\label{classEventGroup_a31ced71b330f350837e4dda2f461b94d} 
+\index{EventGroup@{EventGroup}!````~EventGroup@{\texorpdfstring{$\sim$}{\string~}EventGroup}}
+\index{````~EventGroup@{\texorpdfstring{$\sim$}{\string~}EventGroup}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventGroup()}{\string~EventGroup()}}
+{\footnotesize\ttfamily Event\+Group\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Destroys this group and, by explicitly {\ttfamily delete}-\/ing every pointer in its owned children\+\_\+ vector, its entire owned subtree exactly once. Because every \doxylink{classEventComponent}{Event\+Component} in the tree is reachable through exactly one owning \doxylink{classEventGroup}{Event\+Group} at a time (\doxylink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add()}/ \doxylink{classEventGroup_abe700d722780eb0496cd28ad5822dedb}{remove\+Child()} maintain this invariant), no pointer is ever deleted twice and nothing is ever leaked. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEventGroup_a4c0f84ecca145a195c118c95507c0701}\label{classEventGroup_a4c0f84ecca145a195c118c95507c0701} 
+\index{EventGroup@{EventGroup}!add@{add}}
+\index{add@{add}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Event\+Group\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})}
+
+
+
+Adds a child to this group, taking ownership of it, and automatically registers it as an observer of this group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & Owning pointer to the new child. Must not be null, and must not already be owned by another \doxylink{classEventGroup}{Event\+Group} (use \doxylink{classEventGroup_abe700d722780eb0496cd28ad5822dedb}{remove\+Child()} on the current owner first if it is being transferred -- see Task 4.\+2). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventGroup_ab6d615a76da04f466ce5713bc12e0ea4}\label{classEventGroup_ab6d615a76da04f466ce5713bc12e0ea4} 
+\index{EventGroup@{EventGroup}!childCount@{childCount}}
+\index{childCount@{childCount}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{childCount()}{childCount()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Event\+Group\+::child\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+The number of direct children. 
+\end{DoxyReturn}
+\Hypertarget{classEventGroup_a600460d78e6fc8d0ec13b1767590dcc9}\label{classEventGroup_a600460d78e6fc8d0ec13b1767590dcc9} 
+\index{EventGroup@{EventGroup}!close@{close}}
+\index{close@{close}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Event\+Group\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Closes this part of the event. See \doxylink{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}{open()} for the structural-\/vs-\/notification distinction. 
+
+
+
+Implements \mbox{\hyperlink{classEventComponent_a8e13a68d681c1b6affcf13435a09adab}{Event\+Component}}.
+
+\Hypertarget{classEventGroup_aad4aea60d542f6e1d773d3c1ae16c5fa}\label{classEventGroup_aad4aea60d542f6e1d773d3c1ae16c5fa} 
+\index{EventGroup@{EventGroup}!describeSubject@{describeSubject}}
+\index{describeSubject@{describeSubject}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{describeSubject()}{describeSubject()}}
+{\footnotesize\ttfamily std\+::string Event\+Group\+::describe\+Subject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+A short label identifying this group. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9}{Subject}}.
+
+\Hypertarget{classEventGroup_affe035069afc221547fe9e848017ee3c}\label{classEventGroup_affe035069afc221547fe9e848017ee3c} 
+\index{EventGroup@{EventGroup}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Event\+Group\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes the capacity of this component. 
+
+For a Leaf, this is the unit\textquotesingle{}s own capacity. For a Composite, this is the recursive sum of every child\textquotesingle{}s capacity, satisfying the "{}client can query capacity without knowing Leaf vs Composite"{} requirement. This is a {\itshape different} concept from current\+Attendance\+\_\+/capacity\+Threshold\+\_\+ below\+: \doxylink{classEventGroup_affe035069afc221547fe9e848017ee3c}{get\+Capacity()} is the fixed number of seats/slots that exist, while attendance/threshold track whether it is full {\itshape right now}. \begin{DoxyReturn}{Returns}
+Capacity in attendee headcount. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classEventComponent_a6128b4c0f20d353a29d45348f48a5f2e}{Event\+Component}}.
+
+\Hypertarget{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}\label{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1} 
+\index{EventGroup@{EventGroup}!open@{open}}
+\index{open@{open}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void Event\+Group\+::open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Opens this part of the event. 
+
+For a Leaf this affects only itself. For a Composite this is a {\itshape structural} operation that recurses into every child, distinct from (and complementary to) an OPEN notice travelling through the \doxylink{classObserver}{Observer} collaboration. 
+
+Implements \mbox{\hyperlink{classEventComponent_ada5f41377769e0cbdaa7546477b3970c}{Event\+Component}}.
+
+\Hypertarget{classEventGroup_a5da833b62ccc17d9a9e33139e869f39e}\label{classEventGroup_a5da833b62ccc17d9a9e33139e869f39e} 
+\index{EventGroup@{EventGroup}!reactToNotice@{reactToNotice}}
+\index{reactToNotice@{reactToNotice}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{reactToNotice()}{reactToNotice()}}
+{\footnotesize\ttfamily void Event\+Group\+::react\+To\+Notice (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Self-\/reaction hook, analogous to \doxylink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{Event\+Unit\+::react\+To\+Notice} but for group-\/level state (kept separate from cascading in \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()}). 
+
+Per the current notice-\/reaction policy (see README.\+md), \doxylink{classEventGroup}{Event\+Group} only reacts to\+: OPEN/\+CLOSE/\+EVACUATE (open/closed state -- required to affect {\itshape every} \doxylink{classEventComponent}{Event\+Component}), CAPACITY\+\_\+\+ALERT (compares its own current\+Attendance\+\_\+ against capacity\+Threshold\+\_\+ via the shared \doxylink{classEventComponent_a9825b3edb52b95f7e7aa4264a025f1a8}{Event\+Component\+::report\+Capacity\+Alert()} helper -- also required to affect every \doxylink{classEventComponent}{Event\+Component}), and ANNOUNCEMENT (a PA-\/style notice that, per policy, only ever affects Event\+Groups). PAUSE, RESUME, SCHEDULE\+\_\+\+CHANGE and CANCEL are deliberately {\itshape not} handled here -- those four only affect specific Concrete\+Leaves, never a group. 
+\begin{DoxyParams}{Parameters}
+{\em notice} & The notice being reacted to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventGroup_abe700d722780eb0496cd28ad5822dedb}\label{classEventGroup_abe700d722780eb0496cd28ad5822dedb} 
+\index{EventGroup@{EventGroup}!removeChild@{removeChild}}
+\index{removeChild@{removeChild}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{removeChild()}{removeChild()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*} Event\+Group\+::remove\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventComponent}{Event\+Component}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})}
+
+
+
+Removes a child from this group by pointer identity, releasing ownership to the caller (the caller now becomes responsible for either \doxylink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add()}ing it to another \doxylink{classEventGroup}{Event\+Group} or explicitly deleting it) and detaching it as an observer of this group. 
+
+This is the operation used for runtime reorganisation (Task 4.\+2)\+: the caller typically immediately \doxylink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add()}s the returned pointer to a different \doxylink{classEventGroup}{Event\+Group}, which re-\/establishes both ownership and observer registration in the new parent.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & Raw pointer identifying which child to remove (compared by address). Ownership passes to the caller if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The now-\/detached child, ready to be \doxylink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add()}ed elsewhere, or nullptr if child was not found among this group\textquotesingle{}s children. 
+\end{DoxyReturn}
+\Hypertarget{classEventGroup_a951b8bc146bba6a2ecf73aef6f949ba9}\label{classEventGroup_a951b8bc146bba6a2ecf73aef6f949ba9} 
+\index{EventGroup@{EventGroup}!reportStatus@{reportStatus}}
+\index{reportStatus@{reportStatus}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{reportStatus()}{reportStatus()}}
+{\footnotesize\ttfamily void Event\+Group\+::report\+Status (\begin{DoxyParamCaption}\item[{int}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Prints a human-\/readable status report for this component, recursively including any children. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indent} & Number of indentation levels to prefix output lines with; used so nested components print as a tree. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classEventComponent_ab71e0ee72d62a75756c926c78493cc94}{Event\+Component}}.
+
+\Hypertarget{classEventGroup_a49dd237deffcde74961175a84a7c0256}\label{classEventGroup_a49dd237deffcde74961175a84a7c0256} 
+\index{EventGroup@{EventGroup}!update@{update}}
+\index{update@{update}!EventGroup@{EventGroup}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Event\+Group\+::update (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reacts to a notice pushed from a parent \doxylink{classSubject}{Subject}, then cascades it to this group\textquotesingle{}s own observers (its children). This is the "{}receives from above, notifies below"{} behaviour required by Task 3.\+4. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em notice} & The notice pushed from a parent \doxylink{classSubject}{Subject}. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0}{Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{EventGroup_8h}{Event\+Group.\+h}}\item 
+Event\+Group.\+cpp\end{DoxyCompactItemize}

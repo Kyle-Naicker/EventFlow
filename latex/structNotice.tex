@@ -1,0 +1,69 @@
+\doxysection{Notice Struct Reference}
+\hypertarget{structNotice}{}\label{structNotice}\index{Notice@{Notice}}
+
+
+A single notice broadcast by a \doxylink{classSubject}{Subject} to it \doxylink{classObserver}{Observer}.  
+
+
+
+
+{\ttfamily \#include $<$Notice.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structNotice_a38ddbc4640546b325eb42aba16273f35}\label{structNotice_a38ddbc4640546b325eb42aba16273f35} 
+{\bfseries Notice} ()
+\begin{DoxyCompactList}\small\item\em Default-\/constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structNotice_a5f5633653d012653e4b6a48f73ab9cf1}{Notice}} (\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}} t, const std\+::string \&msg, int threshold=-\/1, const std\+::string \&new\+Start="{}"{}, const std\+::string \&new\+End="{}"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structNotice_ae2f875d6153cefbd8baaadcf4d6cdc88}\label{structNotice_ae2f875d6153cefbd8baaadcf4d6cdc88} 
+\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}} {\bfseries type}
+\begin{DoxyCompactList}\small\item\em What kind of notice this is. \end{DoxyCompactList}\item 
+\Hypertarget{structNotice_ad07e4c63f849c0c960addcd2fd2276a2}\label{structNotice_ad07e4c63f849c0c960addcd2fd2276a2} 
+std\+::string {\bfseries message}
+\begin{DoxyCompactList}\small\item\em Detail for Logging/\+UI. \end{DoxyCompactList}\item 
+\Hypertarget{structNotice_ac315b892a2ed95b48d0410a542f9675c}\label{structNotice_ac315b892a2ed95b48d0410a542f9675c} 
+int {\bfseries capacity\+Threshold} = -\/1
+\begin{DoxyCompactList}\small\item\em -\/1 if unused \end{DoxyCompactList}\item 
+\Hypertarget{structNotice_aba4e7b1cf0b20a12a1f9736329412000}\label{structNotice_aba4e7b1cf0b20a12a1f9736329412000} 
+std\+::string {\bfseries new\+Start\+Time}
+\begin{DoxyCompactList}\small\item\em New Start time for a SCHEDULE\+\_\+\+CHANGE. \end{DoxyCompactList}\item 
+\Hypertarget{structNotice_a8beb6f01293998f0499d0e70ef932bf9}\label{structNotice_a8beb6f01293998f0499d0e70ef932bf9} 
+std\+::string {\bfseries new\+End\+Time}
+\begin{DoxyCompactList}\small\item\em New end time for a SCHEDULE\+\_\+\+CHANGE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A single notice broadcast by a \doxylink{classSubject}{Subject} to it \doxylink{classObserver}{Observer}. 
+
+Event\+Flow uses a \textquotesingle{}push\textquotesingle{} model\+: The subject packages everything an \doxylink{classObserver}{Observer} needs directly into \doxylink{structNotice}{Notice} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structNotice_a5f5633653d012653e4b6a48f73ab9cf1}\label{structNotice_a5f5633653d012653e4b6a48f73ab9cf1} 
+\index{Notice@{Notice}!Notice@{Notice}}
+\index{Notice@{Notice}!Notice@{Notice}}
+\doxysubsubsection{\texorpdfstring{Notice()}{Notice()}}
+{\footnotesize\ttfamily Notice\+::\+Notice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}}}]{t,  }\item[{const std\+::string \&}]{msg,  }\item[{int}]{threshold = {\ttfamily -\/1},  }\item[{const std\+::string \&}]{new\+Start = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{new\+End = {\ttfamily "{}"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em t} & Kind of notice \\
+\hline
+\mbox{\texttt{ in}}  & {\em msg} & Detail for logging/\+UI \\
+\hline
+\mbox{\texttt{ in}}  & {\em threshold} & Capacity threshold; -\/1 if unused \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+Start} & New start time for a SCHEDULE\+\_\+\+CHANGE; empty if unused \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+End} & New end time for a SCHEDULE\+\_\+\+CHANGE; empty if unused \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Notice_8h}{Notice.\+h}}\end{DoxyCompactItemize}

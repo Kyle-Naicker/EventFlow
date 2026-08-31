@@ -1,0 +1,292 @@
+\doxysection{Event\+Unit Class Reference}
+\hypertarget{classEventUnit}{}\label{classEventUnit}\index{EventUnit@{EventUnit}}
+
+
+Abstract base for every individual (non-\/composite) operational unit at Tech\+Connect\+: a leaf in the Composite tree.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Unit.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Unit\+:
+% FIG 0
+
+
+Collaboration diagram for Event\+Unit\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventUnit_abed689f13d6c0618404325dbf78f7186}{Event\+Unit}} (const std\+::string \&name, int capacity, bool indoors, const std\+::string \&start\+Time="{}"{}, const std\+::string \&end\+Time="{}"{})
+\item 
+\mbox{\hyperlink{classEventUnit_aed9ac90e0e65a6514dfbfa5dffc2f6bb}{\texorpdfstring{$\sim$}{\string~}\+Event\+Unit}} () override
+\item 
+void \mbox{\hyperlink{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc}{open}} () override
+\begin{DoxyCompactList}\small\item\em Opens this part of the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventUnit_a963e4e7f3e1d0b14c68077e3bcae7f78}{close}} () override
+\begin{DoxyCompactList}\small\item\em Closes this part of the event. See \doxylink{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc}{open()} for the structural-\/vs-\/notification distinction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventUnit_a2cfc37c341e37338914ae29d4f2ee14a}{report\+Status}} (int index=0) const override
+\begin{DoxyCompactList}\small\item\em Prints a human-\/readable status report for this component, recursively including any children. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventUnit_a18d25238a699c90ff6126e5ea860901b}{get\+Capacity}} () const override
+\begin{DoxyCompactList}\small\item\em Computes the capacity of this component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174}{update}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice) override
+\begin{DoxyCompactList}\small\item\em \doxylink{classObserver}{Observer} entry point. Dispatches to \doxylink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{react\+To\+Notice()} so that concrete leaves can react differently to the same notice through polymorphism rather than type inspection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEventUnit_a46e96b8f444ab2cc0a5d07b80cdf8bd2}{is\+Paused}} () const
+\item 
+bool \mbox{\hyperlink{classEventUnit_a68dea8651bc1af23c8754fd727f315f2}{is\+Indoors}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventComponent_a5ddacaca4a90926891cbee8068d11007}{Event\+Component}} (const std\+::string \&name, const std\+::string \&start\+Time="{}"{}, const std\+::string \&end\+Time="{}"{})
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event\+Component} ()
+\begin{DoxyCompactList}\small\item\em Every polymorphic base in Event\+Flow has a virtual destructor. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_a78f3480318e1019f76fe73e02461f260}{get\+Name}} () const
+\item 
+bool \mbox{\hyperlink{classEventComponent_a41d0483abfcb7cbfd8cf53a77e141c2f}{is\+Open}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_a5c8bb5432315af9b32fad216859118cf}{get\+Start\+Time}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventComponent_afddac03fdc96231927b9978fc39b3f45}{get\+End\+Time}} () const
+\item 
+void \mbox{\hyperlink{classEventComponent_a9d7b8e680b18e307f48da0b0aa3a7b68}{set\+Current\+Attendance}} (int count)
+\begin{DoxyCompactList}\small\item\em Records how many attendees are currently present at this component. Simulates a headcount feed (e.\+g. a door counter); called by the client, not derived from any \doxylink{structNotice}{Notice}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventComponent_a9a06402637204177a3641e73171c3069}{get\+Current\+Attendance}} () const
+\item 
+void \mbox{\hyperlink{classEventComponent_aecebf59592950c18a2ebc9430533b390}{set\+Capacity\+Threshold}} (int threshold)
+\begin{DoxyCompactList}\small\item\em Sets the attendance figure at which this component should treat itself as full when it next reacts to a CAPACITY\+\_\+\+ALERT. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEventComponent_aafb5e33e092802a7f6a57b508a1b79b9}{get\+Capacity\+Threshold}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObserver}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Vitual destructor for a polymorphic base. Observers do not own. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{react\+To\+Notice}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)=0
+\begin{DoxyCompactList}\small\item\em Concrete-\/leaf-\/specific reaction to an incoming notice. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classEventUnit_a43cb0ea476ae1e464ef9db1a4249fb92}{status\+Line}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEventComponent_a9825b3edb52b95f7e7aa4264a025f1a8}{report\+Capacity\+Alert}} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Shared CAPACITY\+\_\+\+ALERT reaction, used by every concrete \doxylink{classEventComponent}{Event\+Component} (both Leaves and Composites) so that "{}\+OPEN,        CLOSE, CAPACITY\+\_\+\+ALERT and EVACUATE affect all        Event\+Components"{} does not require duplicating the same comparison-\/and-\/print logic in seven leaf classes plus \doxylink{classEventGroup}{Event\+Group}. Compares current\+Attendance\+\_\+ against capacity\+Threshold\+\_\+ and logs "{}\+VENUE FULL"{} or a "{}not yet        full"{} status; does nothing if threshold-\/tracking is disabled (capacity\+Threshold\+\_\+ \texorpdfstring{$<$}{<} 0). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventComponent_ab4e7ce56f8c8e46519faa3eb8664d436}{update\+Schedule}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice, const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Shared SCHEDULE\+\_\+\+CHANGE reaction\+: updates start\+Time\+\_\+/ end\+Time\+\_\+ from {\ttfamily notice} (leaving either unchanged if the corresponding field on the notice is empty) and logs the old and new schedule. Only called by the four leaf types SCHEDULE\+\_\+\+CHANGE actually affects (\doxylink{classLectureHall}{Lecture\+Hall}, \doxylink{classWorkshopRoom}{Workshop\+Room}, \doxylink{classRegistrationDesk}{Registration\+Desk}, \doxylink{classExhibitionBooth}{Exhibition\+Booth}) -- \doxylink{classEventGroup}{Event\+Group} and the remaining leaf types simply never call it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEventComponent_a4c56450e43891bb458a2297b9f828563}{is\+At\+Or\+Over\+Capacity\+Threshold}} () const
+\begin{DoxyCompactList}\small\item\em True once current\+Attendance\+\_\+ has reached or exceeded capacity\+Threshold\+\_\+ (and threshold-\/tracking is enabled). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classEventUnit_ac5cb6381613bb3ebb6e7b4115b331c20}\label{classEventUnit_ac5cb6381613bb3ebb6e7b4115b331c20} 
+bool {\bfseries indoors\+\_\+}
+\begin{DoxyCompactList}\small\item\em Whether this unit is physically indoors. \end{DoxyCompactList}\item 
+\Hypertarget{classEventUnit_ae3efa141deac3f75757edd1ec185c38e}\label{classEventUnit_ae3efa141deac3f75757edd1ec185c38e} 
+bool {\bfseries is\+Paused\+\_\+} =false
+\begin{DoxyCompactList}\small\item\em Whether this unit is currently safety-\/paused. \end{DoxyCompactList}\item 
+\Hypertarget{classEventUnit_ae8d8de453f6ed278be9a936ffc6994c6}\label{classEventUnit_ae8d8de453f6ed278be9a936ffc6994c6} 
+int {\bfseries capacity\+\_\+} =0
+\begin{DoxyCompactList}\small\item\em Attendee capacity of this unit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEventComponent}{Event\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\begin{DoxyCompactList}\small\item\em Display name of this component. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Open\+\_\+} = false
+\begin{DoxyCompactList}\small\item\em Whether this component currently considers itself open. \end{DoxyCompactList}\item 
+std\+::string {\bfseries start\+Time\+\_\+}
+\begin{DoxyCompactList}\small\item\em Scheduled start time for this component. \end{DoxyCompactList}\item 
+std\+::string {\bfseries end\+Time\+\_\+}
+\begin{DoxyCompactList}\small\item\em Scheduled end time for this component. \end{DoxyCompactList}\item 
+int {\bfseries current\+Attendance\+\_\+} = 0
+\begin{DoxyCompactList}\small\item\em Most recently recorded headcount. \end{DoxyCompactList}\item 
+int {\bfseries capacity\+Threshold\+\_\+} = -\/1
+\begin{DoxyCompactList}\small\item\em Attendance that counts as "{}full"{}; -\/1 = not tracked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base for every individual (non-\/composite) operational unit at Tech\+Connect\+: a leaf in the Composite tree. 
+
+GoF roles\+:
+\begin{DoxyItemize}
+\item {\bfseries{Composite pattern}}\+: \doxylink{classEventUnit}{Event\+Unit} is a concrete {\bfseries{Leaf}}. It has no children and implements the component operations directly.
+\item {\bfseries{\doxylink{classObserver}{Observer} pattern}}\+: \doxylink{classEventUnit}{Event\+Unit} is a concrete {\bfseries{\doxylink{classObserver}{Observer}}}. It is registered with the \doxylink{classEventGroup}{Event\+Group} that contains it and reacts to notices pushed down from above via \doxylink{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174}{update()}.
+\end{DoxyItemize}
+
+These are two separate collaborations for two separate reasons\+: Composite asks "{}what does this unit consist of?"{} (answer\+: nothing, it is atomic) while \doxylink{classObserver}{Observer} asks "{}who does this unit need to hear from?"{} (answer\+: its containing \doxylink{classEventGroup}{Event\+Group}). Being both is not a pattern misuse -- see design rationale in README.\+md.
+
+Concrete subclasses only need to implement \doxylink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{react\+To\+Notice()} to get meaningfully different, polymorphic behaviour for the same notice -- no type-\/checking is used anywhere in the dispatch.
+
+start\+Time\+\_\+/end\+Time\+\_\+/current\+Attendance\+\_\+/capacity\+Threshold\+\_\+/is\+Open\+\_\+ are all inherited directly from \doxylink{classEventComponent}{Event\+Component}. \doxylink{classEventUnit}{Event\+Unit} adds indoors\+\_\+ and is\+Paused\+\_\+, which are only ever meaningful for an individual operational unit (not for a whole \doxylink{classEventGroup}{Event\+Group}). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEventUnit_abed689f13d6c0618404325dbf78f7186}\label{classEventUnit_abed689f13d6c0618404325dbf78f7186} 
+\index{EventUnit@{EventUnit}!EventUnit@{EventUnit}}
+\index{EventUnit@{EventUnit}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{EventUnit()}{EventUnit()}}
+{\footnotesize\ttfamily Event\+Unit\+::\+Event\+Unit (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{capacity,  }\item[{bool}]{indoors,  }\item[{const std\+::string \&}]{start\+Time = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{end\+Time = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Display name of this unit. \\
+\hline
+{\em capacity} & Attendee capacity of this unit. \\
+\hline
+{\em indoors} & Whether this unit is indoors (used by some units to decide how to react to safety-\/related notices). \\
+\hline
+{\em start\+Time} & Scheduled start time for this unit, e.\+g. "{}10\+:00"{}. \\
+\hline
+{\em end\+Time} & Scheduled end time for this unit, e.\+g. "{}12\+:00"{}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventUnit_aed9ac90e0e65a6514dfbfa5dffc2f6bb}\label{classEventUnit_aed9ac90e0e65a6514dfbfa5dffc2f6bb} 
+\index{EventUnit@{EventUnit}!````~EventUnit@{\texorpdfstring{$\sim$}{\string~}EventUnit}}
+\index{````~EventUnit@{\texorpdfstring{$\sim$}{\string~}EventUnit}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventUnit()}{\string~EventUnit()}}
+{\footnotesize\ttfamily Event\+Unit\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+Virtual Destructor observer before destruction (see \doxylink{classEventGroup_abe700d722780eb0496cd28ad5822dedb}{Event\+Group\+::remove\+Child}/\texorpdfstring{$\sim$}{\string~}\+Event\+Group). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEventUnit_a963e4e7f3e1d0b14c68077e3bcae7f78}\label{classEventUnit_a963e4e7f3e1d0b14c68077e3bcae7f78} 
+\index{EventUnit@{EventUnit}!close@{close}}
+\index{close@{close}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Event\+Unit\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Closes this part of the event. See \doxylink{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc}{open()} for the structural-\/vs-\/notification distinction. 
+
+
+
+Implements \mbox{\hyperlink{classEventComponent_a8e13a68d681c1b6affcf13435a09adab}{Event\+Component}}.
+
+\Hypertarget{classEventUnit_a18d25238a699c90ff6126e5ea860901b}\label{classEventUnit_a18d25238a699c90ff6126e5ea860901b} 
+\index{EventUnit@{EventUnit}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Event\+Unit\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes the capacity of this component. 
+
+For a Leaf, this is the unit\textquotesingle{}s own capacity. For a Composite, this is the recursive sum of every child\textquotesingle{}s capacity, satisfying the "{}client can query capacity without knowing Leaf vs Composite"{} requirement. This is a {\itshape different} concept from current\+Attendance\+\_\+/capacity\+Threshold\+\_\+ below\+: \doxylink{classEventUnit_a18d25238a699c90ff6126e5ea860901b}{get\+Capacity()} is the fixed number of seats/slots that exist, while attendance/threshold track whether it is full {\itshape right now}. \begin{DoxyReturn}{Returns}
+Capacity in attendee headcount. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classEventComponent_a6128b4c0f20d353a29d45348f48a5f2e}{Event\+Component}}.
+
+\Hypertarget{classEventUnit_a68dea8651bc1af23c8754fd727f315f2}\label{classEventUnit_a68dea8651bc1af23c8754fd727f315f2} 
+\index{EventUnit@{EventUnit}!isIndoors@{isIndoors}}
+\index{isIndoors@{isIndoors}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{isIndoors()}{isIndoors()}}
+{\footnotesize\ttfamily bool Event\+Unit\+::is\+Indoors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Whether this unit is physically indoors. 
+\end{DoxyReturn}
+\Hypertarget{classEventUnit_a46e96b8f444ab2cc0a5d07b80cdf8bd2}\label{classEventUnit_a46e96b8f444ab2cc0a5d07b80cdf8bd2} 
+\index{EventUnit@{EventUnit}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{isPaused()}{isPaused()}}
+{\footnotesize\ttfamily bool Event\+Unit\+::is\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Whether this unit is currently paused (safety-\/suspended) 
+\end{DoxyReturn}
+\Hypertarget{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc}\label{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc} 
+\index{EventUnit@{EventUnit}!open@{open}}
+\index{open@{open}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void Event\+Unit\+::open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Opens this part of the event. 
+
+For a Leaf this affects only itself. For a Composite this is a {\itshape structural} operation that recurses into every child, distinct from (and complementary to) an OPEN notice travelling through the \doxylink{classObserver}{Observer} collaboration. 
+
+Implements \mbox{\hyperlink{classEventComponent_ada5f41377769e0cbdaa7546477b3970c}{Event\+Component}}.
+
+\Hypertarget{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}\label{classEventUnit_a896e33682a4c96fbcc970e807f5846bd} 
+\index{EventUnit@{EventUnit}!reactToNotice@{reactToNotice}}
+\index{reactToNotice@{reactToNotice}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{reactToNotice()}{reactToNotice()}}
+{\footnotesize\ttfamily virtual void Event\+Unit\+::react\+To\+Notice (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Concrete-\/leaf-\/specific reaction to an incoming notice. 
+
+Subclasses override this to implement the "{}same notice, different behaviour"{} requirement. Implementations should update is\+Open\+\_\+/is\+Paused\+\_\+/status\+\_\+ as appropriate and may print a short log line describing what happened. 
+\begin{DoxyParams}{Parameters}
+{\em notice} & The notice being reacted to. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classLectureHall_a0eaac42fd8dfc62c807de96ad9df3356}{Lecture\+Hall}}, \mbox{\hyperlink{classWorkshopRoom_a275c8ea33d0f110bdace07bd20be7da6}{Workshop\+Room}}, \mbox{\hyperlink{classRegistrationDesk_a88563ba22df24958cd9a56a3e9c3c1eb}{Registration\+Desk}}, \mbox{\hyperlink{classExhibitionBooth_a2c97bed7ae5d663528db6a55d02a332c}{Exhibition\+Booth}}, \mbox{\hyperlink{classCateringStation_ad62b19ce2e35221aaae9a53f0dfe334f}{Catering\+Station}}, \mbox{\hyperlink{classShuttleStop_a064a230254bdeb7abe98438637cc7006}{Shuttle\+Stop}}, and \mbox{\hyperlink{classMedicalStation_a5bec95ea48d20064d78c48a816450b6e}{Medical\+Station}}.
+
+\Hypertarget{classEventUnit_a2cfc37c341e37338914ae29d4f2ee14a}\label{classEventUnit_a2cfc37c341e37338914ae29d4f2ee14a} 
+\index{EventUnit@{EventUnit}!reportStatus@{reportStatus}}
+\index{reportStatus@{reportStatus}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{reportStatus()}{reportStatus()}}
+{\footnotesize\ttfamily void Event\+Unit\+::report\+Status (\begin{DoxyParamCaption}\item[{int}]{indent = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Prints a human-\/readable status report for this component, recursively including any children. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indent} & Number of indentation levels to prefix output lines with; used so nested components print as a tree. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classEventComponent_ab71e0ee72d62a75756c926c78493cc94}{Event\+Component}}.
+
+\Hypertarget{classEventUnit_a43cb0ea476ae1e464ef9db1a4249fb92}\label{classEventUnit_a43cb0ea476ae1e464ef9db1a4249fb92} 
+\index{EventUnit@{EventUnit}!statusLine@{statusLine}}
+\index{statusLine@{statusLine}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{statusLine()}{statusLine()}}
+{\footnotesize\ttfamily std\+::string Event\+Unit\+::status\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+A short label describing this unit\textquotesingle{}s current activity, shown by the default \doxylink{classEventUnit_a2cfc37c341e37338914ae29d4f2ee14a}{report\+Status()} implementation. 
+\end{DoxyReturn}
+\Hypertarget{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174}\label{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174} 
+\index{EventUnit@{EventUnit}!update@{update}}
+\index{update@{update}!EventUnit@{EventUnit}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Event\+Unit\+::update (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\doxylink{classObserver}{Observer} entry point. Dispatches to \doxylink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{react\+To\+Notice()} so that concrete leaves can react differently to the same notice through polymorphism rather than type inspection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em notice} & The notice pushed from this unit\textquotesingle{}s containing group. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0}{Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{EventUnit_8h}{Event\+Unit.\+h}}\item 
+Event\+Unit.\+cpp\end{DoxyCompactItemize}

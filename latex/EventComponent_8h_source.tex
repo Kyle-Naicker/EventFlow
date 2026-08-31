@@ -1,0 +1,63 @@
+\doxysection{Event\+Component.\+h}
+\hypertarget{EventComponent_8h_source}{}\label{EventComponent_8h_source}\mbox{\hyperlink{EventComponent_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ EVENTCOMPONENT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ EVENTCOMPONENT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNotice}{Notice}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventComponent}{EventComponent}}\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classEventComponent_a5ddacaca4a90926891cbee8068d11007}{EventComponent}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classEventComponent_ad24ce1869fec66467359558724812af1}{name\_}}(name),\ \mbox{\hyperlink{classEventComponent_aa3eba771e0c1606070c42d08722b6d24}{startTime\_}}(startTime),\ \mbox{\hyperlink{classEventComponent_aa8ec358f918d2d11fce8eb48edf7069f}{endTime\_}}(endTime)\ \{\}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classEventComponent_a0b229e18d9611b8109c0a5527e6b01df}{\string~EventComponent}}()\ \{\}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_ada5f41377769e0cbdaa7546477b3970c}{open}}()\ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_a8e13a68d681c1b6affcf13435a09adab}{close}}()\ =\ 0;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_ab71e0ee72d62a75756c926c78493cc94}{reportStatus}}(\textcolor{keywordtype}{int}\ indent\ =\ 0)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventComponent_a6128b4c0f20d353a29d45348f48a5f2e}{getCapacity}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEventComponent_a78f3480318e1019f76fe73e02461f260}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_ad24ce1869fec66467359558724812af1}{name\_}};\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventComponent_a41d0483abfcb7cbfd8cf53a77e141c2f}{isOpen}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_a3ad9fbf60a25b11efc389a5eb98d5634}{isOpen\_}};\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEventComponent_a5c8bb5432315af9b32fad216859118cf}{getStartTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_aa3eba771e0c1606070c42d08722b6d24}{startTime\_}};\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEventComponent_afddac03fdc96231927b9978fc39b3f45}{getEndTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_aa8ec358f918d2d11fce8eb48edf7069f}{endTime\_}};\ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_a9d7b8e680b18e307f48da0b0aa3a7b68}{setCurrentAttendance}}(\textcolor{keywordtype}{int}\ count)\ \{\ \mbox{\hyperlink{classEventComponent_a7878c7171e1a7d36dc20bca524022fed}{currentAttendance\_}}\ =\ count;\ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventComponent_a9a06402637204177a3641e73171c3069}{getCurrentAttendance}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_a7878c7171e1a7d36dc20bca524022fed}{currentAttendance\_}};\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_aecebf59592950c18a2ebc9430533b390}{setCapacityThreshold}}(\textcolor{keywordtype}{int}\ threshold)\ \{\ \mbox{\hyperlink{classEventComponent_ab38f26e310e3b9ba8e5aa7daaa15caff}{capacityThreshold\_}}\ =\ threshold;\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventComponent_aafb5e33e092802a7f6a57b508a1b79b9}{getCapacityThreshold}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_ab38f26e310e3b9ba8e5aa7daaa15caff}{capacityThreshold\_}};\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_a9825b3edb52b95f7e7aa4264a025f1a8}{reportCapacityAlert}}(\textcolor{keyword}{const}\ std::string\&\ label)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventComponent_ab4e7ce56f8c8e46519faa3eb8664d436}{updateSchedule}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice,\ \textcolor{keyword}{const}\ std::string\&\ label);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventComponent_a4c56450e43891bb458a2297b9f828563}{isAtOrOverCapacityThreshold}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventComponent_ab38f26e310e3b9ba8e5aa7daaa15caff}{capacityThreshold\_}}\ >=\ 0\ \&\&\ \mbox{\hyperlink{classEventComponent_a7878c7171e1a7d36dc20bca524022fed}{currentAttendance\_}}\ >=\ \mbox{\hyperlink{classEventComponent_ab38f26e310e3b9ba8e5aa7daaa15caff}{capacityThreshold\_}};}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ std::string\ \mbox{\hyperlink{classEventComponent_ad24ce1869fec66467359558724812af1}{name\_}};\ \ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventComponent_a3ad9fbf60a25b11efc389a5eb98d5634}{isOpen\_}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ std::string\ \mbox{\hyperlink{classEventComponent_aa3eba771e0c1606070c42d08722b6d24}{startTime\_}};\ }
+\DoxyCodeLine{00165\ \ \ \ \ std::string\ \mbox{\hyperlink{classEventComponent_aa8ec358f918d2d11fce8eb48edf7069f}{endTime\_}};\ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventComponent_a7878c7171e1a7d36dc20bca524022fed}{currentAttendance\_}}\ =\ 0;\ \ \ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventComponent_ab38f26e310e3b9ba8e5aa7daaa15caff}{capacityThreshold\_}}\ =\ -\/1;\ \ }
+\DoxyCodeLine{00168\ \};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EVENTFLOW\_EVENTCOMPONENT\_H}}
+
+\end{DoxyCode}

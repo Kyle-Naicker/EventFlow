@@ -1,0 +1,126 @@
+\doxysection{Notice.\+h File Reference}
+\hypertarget{Notice_8h}{}\label{Notice_8h}\index{Notice.h@{Notice.h}}
+
+
+Defines the notice representation broadcast through the observer collaboration in Event\+Flow.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Notice.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structNotice}{Notice}}
+\begin{DoxyCompactList}\small\item\em A single notice broadcast by a \doxylink{classSubject}{Subject} to it \doxylink{classObserver}{Observer}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}} \{ \newline
+\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa38bd5138bf35514df41a1795ebbf5c3}{OPEN}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a7286293c9125ac7d7bace94c190bc16d}{CLOSE}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a96103dabc0cfe5d03ac8ee954e9c9681}{SCHEDULE\+\_\+\+CHANGE}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570ab4cd9a992420b71906cceedcd95c97dd}{CAPACITY\+\_\+\+ALERT}}
+, \newline
+\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a291554596c183e837f0a6bec3767c891}{PAUSE}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570abac2aec3ee8d7d495123dbe5ca2fdac9}{RESUME}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a687903ab49b2b39547021636f5977a84}{EVACUATE}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570af35345ef1162f41f92f92cefa69b2ac3}{WEATHER\+\_\+\+ALERT}}
+, \newline
+\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a87a904ae5b928195946b208da732235c}{POWER\+\_\+\+OUTAGE}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a2027c027133e22c8929e2874dc44dd36}{CANCEL}}
+, \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa9fe662f80887cbacf6776aab8e00965}{ANNOUNCEMENT}}
+ \}
+\begin{DoxyCompactList}\small\item\em The kind of notice that can travel through Event\+Flows\textquotesingle{}s \doxylink{classObserver}{Observer}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Notice_8h_ad87aed36ebc360150eb6eef525b40634}{notice\+Type\+Name}} (\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Coverts a Notice\+Type to a short label, used for console output only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the notice representation broadcast through the observer collaboration in Event\+Flow. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570} 
+\index{Notice.h@{Notice.h}!NoticeType@{NoticeType}}
+\index{NoticeType@{NoticeType}!Notice.h@{Notice.h}}
+\doxysubsubsection{\texorpdfstring{NoticeType}{NoticeType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+The kind of notice that can travel through Event\+Flows\textquotesingle{}s \doxylink{classObserver}{Observer}. 
+
+The first seven values are notices required be the specificaation The final three (VENUE\+\_\+\+CHANGE, POWER\+\_\+\+OUTAGE, CANCEL) are original features (Task 4.\+4) \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPEN@{OPEN}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!OPEN@{OPEN}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa38bd5138bf35514df41a1795ebbf5c3}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa38bd5138bf35514df41a1795ebbf5c3} 
+OPEN&An area should open for business. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOSE@{CLOSE}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!CLOSE@{CLOSE}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a7286293c9125ac7d7bace94c190bc16d}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a7286293c9125ac7d7bace94c190bc16d} 
+CLOSE&An area should close. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCHEDULE\_CHANGE@{SCHEDULE\_CHANGE}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!SCHEDULE\_CHANGE@{SCHEDULE\_CHANGE}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a96103dabc0cfe5d03ac8ee954e9c9681}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a96103dabc0cfe5d03ac8ee954e9c9681} 
+SCHEDULE\+\_\+\+CHANGE&A schedule change for one \doxylink{classEventGroup}{Event\+Group}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAPACITY\_ALERT@{CAPACITY\_ALERT}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!CAPACITY\_ALERT@{CAPACITY\_ALERT}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570ab4cd9a992420b71906cceedcd95c97dd}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570ab4cd9a992420b71906cceedcd95c97dd} 
+CAPACITY\+\_\+\+ALERT&A capacity threshold has been reached. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE@{PAUSE}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!PAUSE@{PAUSE}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a291554596c183e837f0a6bec3767c891}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a291554596c183e837f0a6bec3767c891} 
+PAUSE&Activity should pause. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESUME@{RESUME}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!RESUME@{RESUME}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570abac2aec3ee8d7d495123dbe5ca2fdac9}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570abac2aec3ee8d7d495123dbe5ca2fdac9} 
+RESUME&A previously paused activity may resume. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EVACUATE@{EVACUATE}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!EVACUATE@{EVACUATE}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a687903ab49b2b39547021636f5977a84}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a687903ab49b2b39547021636f5977a84} 
+EVACUATE&Attendees must evacuate the affected area. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WEATHER\_ALERT@{WEATHER\_ALERT}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!WEATHER\_ALERT@{WEATHER\_ALERT}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570af35345ef1162f41f92f92cefa69b2ac3}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570af35345ef1162f41f92f92cefa69b2ac3} 
+WEATHER\+\_\+\+ALERT&Bad weather affecting outdoor venues. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_OUTAGE@{POWER\_OUTAGE}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!POWER\_OUTAGE@{POWER\_OUTAGE}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a87a904ae5b928195946b208da732235c}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a87a904ae5b928195946b208da732235c} 
+POWER\+\_\+\+OUTAGE&Loadshedding or power outage in progress. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CANCEL@{CANCEL}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!CANCEL@{CANCEL}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570a2027c027133e22c8929e2874dc44dd36}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570a2027c027133e22c8929e2874dc44dd36} 
+CANCEL&The event is cancelled. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANNOUNCEMENT@{ANNOUNCEMENT}!Notice.h@{Notice.h}}\index{Notice.h@{Notice.h}!ANNOUNCEMENT@{ANNOUNCEMENT}}}\Hypertarget{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa9fe662f80887cbacf6776aab8e00965}\label{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa9fe662f80887cbacf6776aab8e00965} 
+ANNOUNCEMENT&A general announcement. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Notice_8h_ad87aed36ebc360150eb6eef525b40634}\label{Notice_8h_ad87aed36ebc360150eb6eef525b40634} 
+\index{Notice.h@{Notice.h}!noticeTypeName@{noticeTypeName}}
+\index{noticeTypeName@{noticeTypeName}!Notice.h@{Notice.h}}
+\doxysubsubsection{\texorpdfstring{noticeTypeName()}{noticeTypeName()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} notice\+Type\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{Notice\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Coverts a Notice\+Type to a short label, used for console output only. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em type} & The notice type to describe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A short, non-\/owning string describing the type 
+\end{DoxyReturn}

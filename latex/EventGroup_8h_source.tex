@@ -1,0 +1,55 @@
+\doxysection{Event\+Group.\+h}
+\hypertarget{EventGroup_8h_source}{}\label{EventGroup_8h_source}\mbox{\hyperlink{EventGroup_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ EVENTGROUP\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ EVENTGROUP\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventComponent_8h}{EventComponent.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Observer_8h}{Observer.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Subject_8h}{Subject.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Notice_8h}{Notice.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventGroup}{EventGroup}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEventComponent}{EventComponent}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classObserver}{Observer}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSubject}{Subject}}\{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventGroup}{EventGroup}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventGroup_a31ced71b330f350837e4dda2f461b94d}{\string~EventGroup}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_aa12055a0456c9e6faf6de3a12a70b0e1}{open}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_a600460d78e6fc8d0ec13b1767590dcc9}{close}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_a951b8bc146bba6a2ecf73aef6f949ba9}{reportStatus}}(\textcolor{keywordtype}{int}\ indent=0)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventGroup_affe035069afc221547fe9e848017ee3c}{getCapacity}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Composite-\/specific\ structural\ operations\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_a4c0f84ecca145a195c118c95507c0701}{add}}(\mbox{\hyperlink{classEventComponent}{EventComponent}}*\ child);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventComponent}{EventComponent}}*\ \mbox{\hyperlink{classEventGroup_abe700d722780eb0496cd28ad5822dedb}{removeChild}}(\mbox{\hyperlink{classEventComponent}{EventComponent}}*\ child);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classEventGroup_ab6d615a76da04f466ce5713bc12e0ea4}{childCount}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ children\_.size();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Observer\ (this\ group\ is\ notified\ from\ above)\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_a49dd237deffcde74961175a84a7c0256}{update}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Subject\ (this\ group\ is\ a\ Subject\ to\ its\ own\ children)\ -\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ attach()/detach()/notify()\ are\ inherited\ unchanged\ from\ Subject}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (see\ Subject.h);\ only\ Subject's\ pure\ virtual\ describeSubject()}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ needs\ an\ override\ here.}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classEventGroup_aad4aea60d542f6e1d773d3c1ae16c5fa}{describeSubject}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventGroup_a5da833b62ccc17d9a9e33139e869f39e}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice);}
+\DoxyCodeLine{00146\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ std::vector<EventComponent*>\ children\_;\ }
+\DoxyCodeLine{00149\ \};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

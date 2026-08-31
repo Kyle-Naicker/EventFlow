@@ -1,0 +1,122 @@
+\doxysection{Subject Class Reference}
+\hypertarget{classSubject}{}\label{classSubject}\index{Subject@{Subject}}
+
+
+Abstruct \doxylink{classSubject}{Subject} with shared, reusable implementation \doxylink{classSubject}{Subject} is not made purley abstract because attact/detach/notify have a single implementation that every concrete \doxylink{classSubject}{Subject} in Event\+Flow wants to reuse. Subclasses can still override \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()}.  
+
+
+
+
+{\ttfamily \#include $<$Subject.\+h$>$}
+
+
+
+Inheritance diagram for Subject\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSubject_ae5980067d5ec5522db5a0d78100a34be}\label{classSubject_ae5980067d5ec5522db5a0d78100a34be} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Subject} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for a polymorphic base. A Destructor doesn\textquotesingle{}t own its observers. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a0884bfe374d352c6488a1e40c84246c8}{attach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Registers an observer for future notices Stores a non-\/owning pointer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_a752a7596d52ab986539232f8377ca92c}{detach}} (\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Deregisters an observer so it no longer receives notices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)
+\begin{DoxyCompactList}\small\item\em Pushes a notice to every currently registered observer. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b}{observer\+Count}} () const
+\item 
+virtual std\+::string \mbox{\hyperlink{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9}{describe\+Subject}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns a short, label identifying this concrete \doxylink{classSubject}{Subject} or used in status/log output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSubject_a862ab5ebcc13c62ef2a48b3cbf2abf88}\label{classSubject_a862ab5ebcc13c62ef2a48b3cbf2abf88} 
+std\+::vector$<$ \mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries observers\+\_\+}
+\begin{DoxyCompactList}\small\item\em Non-\/owning registration list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstruct \doxylink{classSubject}{Subject} with shared, reusable implementation \doxylink{classSubject}{Subject} is not made purley abstract because attact/detach/notify have a single implementation that every concrete \doxylink{classSubject}{Subject} in Event\+Flow wants to reuse. Subclasses can still override \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSubject_a0884bfe374d352c6488a1e40c84246c8}\label{classSubject_a0884bfe374d352c6488a1e40c84246c8} 
+\index{Subject@{Subject}!attach@{attach}}
+\index{attach@{attach}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily void Subject\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Registers an observer for future notices Stores a non-\/owning pointer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em observer} & \doxylink{classObserver}{Observer} to register. Must not be a nullptr. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9}\label{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9} 
+\index{Subject@{Subject}!describeSubject@{describeSubject}}
+\index{describeSubject@{describeSubject}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{describeSubject()}{describeSubject()}}
+{\footnotesize\ttfamily virtual std\+::string Subject\+::describe\+Subject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns a short, label identifying this concrete \doxylink{classSubject}{Subject} or used in status/log output. 
+
+\begin{DoxyReturn}{Returns}
+A short label identifying this \doxylink{classSubject}{Subject} 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classEventControl_a721a96624d2edab9cce485624c263dbb}{Event\+Control}}, and \mbox{\hyperlink{classEventGroup_aad4aea60d542f6e1d773d3c1ae16c5fa}{Event\+Group}}.
+
+\Hypertarget{classSubject_a752a7596d52ab986539232f8377ca92c}\label{classSubject_a752a7596d52ab986539232f8377ca92c} 
+\index{Subject@{Subject}!detach@{detach}}
+\index{detach@{detach}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily void Subject\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classObserver}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Deregisters an observer so it no longer receives notices. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em observer} & Obsrever to deregister. May be nullptr. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}\label{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c} 
+\index{Subject@{Subject}!notify@{notify}}
+\index{notify@{notify}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily void Subject\+::notify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Pushes a notice to every currently registered observer. 
+
+Only Observers registered before \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()} begins. This method iterates over snapshot of the registration list so that an observer detaching itself mid-\/notification does not invalidate the loop
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notice} & The notice to broadcast \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b}\label{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b} 
+\index{Subject@{Subject}!observerCount@{observerCount}}
+\index{observerCount@{observerCount}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{observerCount()}{observerCount()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Subject\+::observer\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+The number of currently registered observers 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Subject_8h}{Subject.\+h}}\item 
+Subject.\+cpp\end{DoxyCompactItemize}

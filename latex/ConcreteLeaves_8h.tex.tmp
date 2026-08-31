@@ -1,0 +1,35 @@
+\doxysection{Concrete\+Leaves.\+h File Reference}
+\hypertarget{ConcreteLeaves_8h}{}\label{ConcreteLeaves_8h}\index{ConcreteLeaves.h@{ConcreteLeaves.h}}
+
+
+Concrete Leaf types for the Tech\+Connect conference. Each type reacts meaningfully differently to the same notices. Satisfying task 4.\+1.  
+
+
+{\ttfamily \#include "{}Event\+Unit.\+h"{}}\newline
+Include dependency graph for Concrete\+Leaves.\+h\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLectureHall}{Lecture\+Hall}}
+\begin{DoxyCompactList}\small\item\em A keynote/talk room. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classWorkshopRoom}{Workshop\+Room}}
+\begin{DoxyCompactList}\small\item\em A hands-\/on workshop room. Distinct from \doxylink{classLectureHall}{Lecture\+Hall}\+: an EVACUATE stops the practical activity immediately, but a mere SCHEDULE\+\_\+\+CHANGE causes it to re-\/plan rather than pause. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classRegistrationDesk}{Registration\+Desk}}
+\begin{DoxyCompactList}\small\item\em The attendee registration/check-\/in desk. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classExhibitionBooth}{Exhibition\+Booth}}
+\begin{DoxyCompactList}\small\item\em A sponsor/exhibition booth. Suspends live demos on PAUSE but, unlike a \doxylink{classLectureHall}{Lecture\+Hall}, fully packs down (closes) on CANCEL rather than merely pausing. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCateringStation}{Catering\+Station}}
+\begin{DoxyCompactList}\small\item\em A catering station. On POWER\+\_\+\+OUTAGE it switches to a cold-\/food fallback menu instead of pausing outright -- a genuinely different reaction from every other leaf type. Per policy it does {\itshape not} react to PAUSE/\+RESUME/\+SCHEDULE\+\_\+\+CHANGE/\+CANCEL. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classShuttleStop}{Shuttle\+Stop}}
+\begin{DoxyCompactList}\small\item\em A shuttle pickup point. Always outdoors by nature (a bus stop cannot be indoors), so its {\ttfamily indoors} flag is fixed rather than exposed as a constructor parameter. Per policy it does {\itshape not} react to PAUSE/\+RESUME/\+SCHEDULE\+\_\+\+CHANGE/\+CANCEL -- attendees still need transport during a session pause that isn\textquotesingle{}t itself a weather alert or evacuation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classMedicalStation}{Medical\+Station}}
+\begin{DoxyCompactList}\small\item\em The on-\/site medical station. Deliberately remains unaffected by PAUSE/\+RESUME/\+SCHEDULE\+\_\+\+CHANGE/\+CANCEL/\+WEATHER\+\_\+\+ALERT (when indoors) -- the one leaf type that must never simply "{}stop"{} -- demonstrating that identical notices produce different behaviour purely through polymorphism, not type inspection. Reacts to POWER\+\_\+\+OUTAGE by switching to backup battery power. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete Leaf types for the Tech\+Connect conference. Each type reacts meaningfully differently to the same notices. Satisfying task 4.\+1. 
+
+Every leaf\textquotesingle{}s constructor accepts its own schedule (start\+Time/end\+Time, inherited from \doxylink{classEventComponent}{Event\+Component}) since, per the current tree design, both Event\+Groups and individual leaves are scheduled independently. "{}\+Any Event\+Component can be outdoors"{} (see README.\+md), so every leaf below takes an {\ttfamily indoors} parameter defaulting to true -- except \doxylink{classShuttleStop}{Shuttle\+Stop}, which is always outdoors by nature (a bus stop cannot be indoors), so its {\ttfamily indoors} flag is fixed rather than exposed.
+
+Notice-\/reaction policy (see README.\+md for the full table)\+: OPEN, CLOSE, CAPACITY\+\_\+\+ALERT and EVACUATE affect every leaf type below (and every \doxylink{classEventGroup}{Event\+Group}); PAUSE, RESUME, SCHEDULE\+\_\+\+CHANGE and CANCEL affect only \doxylink{classLectureHall}{Lecture\+Hall}, \doxylink{classWorkshopRoom}{Workshop\+Room}, \doxylink{classRegistrationDesk}{Registration\+Desk} and \doxylink{classExhibitionBooth}{Exhibition\+Booth}; WEATHER\+\_\+\+ALERT affects a leaf only when it is actually outdoors; POWER\+\_\+\+OUTAGE affects only \doxylink{classMedicalStation}{Medical\+Station} and \doxylink{classCateringStation}{Catering\+Station}; ANNOUNCEMENT never affects a leaf (Event\+Groups only). 
