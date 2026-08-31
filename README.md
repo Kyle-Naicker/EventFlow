@@ -307,8 +307,8 @@ centre's to package and broadcast.
 
 ```sh
 make            # builds ./eventflow using -std=c++11 per the Makefile
-./eventflow     # runs the integration demo
-make mem
-make clean
+./eventflow     # runs the programs
+make mem        # checks for memory leaks
+make clean      
 make docs       # Doxygen documentation
 ```
