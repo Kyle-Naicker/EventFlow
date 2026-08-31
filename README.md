@@ -310,4 +310,5 @@ make            # builds ./eventflow using -std=c++11 per the Makefile
 ./eventflow     # runs the integration demo
 make mem
 make clean
+make docs       # Doxygen documentation
 ```
