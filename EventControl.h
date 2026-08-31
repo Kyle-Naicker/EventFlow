@@ -31,6 +31,17 @@ class EventControl : public Subject {
          * @param[in] notice The notice to issue
          */
         void issueNotice(const Notice& notice);
+        /**
+         * @brief Sends a notice directly to one specific Observer without going through
+         *        this control centre's own registration list
+         * 
+         * This is how EventFlow supports targeting one particular part of the venue instead of 
+         * always cascading from the root
+         * 
+         * @param[in] target The specific observer to notify. Must not be nullptr.
+         * @param[in] notice The notice to deliver.
+         */
+        void issueDirectNotice(Observer* target, const Notice& notice);
         /// @return A short label identifying this control center
         std::string describeSubject() const override;
     private:
