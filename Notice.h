@@ -17,11 +17,12 @@
 enum class NoticeType {
     OPEN,                   ///< An area should open for business
     CLOSE,                  ///< An area should close
+    SCHEDULE_CHANGE,        ///< A schedule change for one EventGroup
     CAPACITY_ALERT,         ///< A capacity threshold has been reached
-    WEATHER_ALERT,          ///< A weather alert has been issued
     PAUSE,                  ///< Activity should pause
     RESUME,                 ///< A previously paused activity may resume
     EVACUATE,               ///< Attendees must evacuate the affected area
+    WEATHER_ALERT,          ///< Bad weather affecting outdoor venues
     POWER_OUTAGE,           ///< Loadshedding or power outage in progress
     CANCEL,                 ///< The event is cancelled
     ANNOUNCEMENT            ///< A general announcement
@@ -44,14 +45,24 @@ struct Notice {
     NoticeType type;                ///< What kind of notice this is
     std::string message;            ///< Detail for Logging/UI
     int capacityThreshold = -1;     ///< -1 if unused
+
+    ///New Start time for a SCHEDULE_CHANGE
+    std::string newStartTime;
+
+    ///New end time for a SCHEDULE_CHANGE
+    std::string newEndTime;
+
     /// Default-constructor
-    Notice() : type(NoticeType::CAPACITY_ALERT), message(""), capacityThreshold(-1){}
+    Notice() : type(NoticeType::SCHEDULE_CHANGE), message(""), capacityThreshold(-1){}
     /**
      * @param[in] t Kind of notice
      * @param[in] msg Detail for logging/UI
      * @param[in] threshold Capacity threshold; -1 if unused
+     * @param[in] newStart New start time for a SCHEDULE_CHANGE; empty if unused
+     * @param[in] newEnd New end time for a SCHEDULE_CHANGE; empty if unused
      */
-    Notice(NoticeType t, const std::string& msg, int threshold = -1) : type(t), message(msg), capacityThreshold(threshold){}
+    Notice(NoticeType t, const std::string& msg, int threshold = -1, const std::string& newStart = "", const std::string& newEnd = "") : 
+    type(t), message(msg), capacityThreshold(threshold), newStartTime(newStart), newEndTime(newEnd){}
 };
 
 #endif
