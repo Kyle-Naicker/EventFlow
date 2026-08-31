@@ -1,10 +1,12 @@
 /**
  * @file EventUnit.h
- * @brief The leaf participant of Composite, which is simaltaneously an Observer participant of Observer
+ * @brief The leaf participant of Composite, which is simultaneously 
+ *        an Observer participant of Observer
  */
 
 #ifndef EVENTFLOW_EVENTUNIT_H
 #define EVENTFLOW_EVENTUNIT_H
+
 #include "EventComponent.h"
 #include "Observer.h"
 #include "Notice.h"
@@ -16,9 +18,9 @@
  *        unit at TechConnect: a leaf in the Composite tree.
  *
  * GoF roles:
- * - Composite pattern: EventUnit is a concrete Leaf. It has no
+ * - **Composite pattern**: EventUnit is a concrete **Leaf**. It has no
  *   children and implements the component operations directly.
- * - Observer pattern: EventUnit is a concrete Observer. It is
+ * - **Observer pattern**: EventUnit is a concrete **Observer**. It is
  *   registered with the EventGroup that contains it and reacts to
  *   notices pushed down from above via update().
  *
@@ -26,11 +28,16 @@
  * Composite asks "what does this unit consist of?" (answer: nothing, it
  * is atomic) while Observer asks "who does this unit need to hear from?"
  * (answer: its containing EventGroup). Being both is not a pattern
- * misuse - see design rationale in README.md.
+ * misuse -- see design rationale in README.md.
  *
  * Concrete subclasses only need to implement reactToNotice() to get
- * meaningfully different, polymorphic behaviour for the same notice -
+ * meaningfully different, polymorphic behaviour for the same notice --
  * no type-checking is used anywhere in the dispatch.
+ *
+ * startTime_/endTime_/currentAttendance_/capacityThreshold_/isOpen_ are
+ * all inherited directly from EventComponent. EventUnit adds indoors_
+ * and isPaused_, which are only ever meaningful for an individual
+ * operational unit (not for a whole EventGroup).
  */
 class EventUnit:public EventComponent,public Observer{
     public:
@@ -39,10 +46,13 @@ class EventUnit:public EventComponent,public Observer{
         * @param capacity Attendee capacity of this unit.
         * @param indoors Whether this unit is indoors (used by some units to
         *                decide how to react to safety-related notices).
+        * @param startTime Scheduled start time for this unit, e.g. "10:00".
+        * @param endTime Scheduled end time for this unit, e.g. "12:00".
         */
-        EventUnit(const std::string& name, int capacity, bool indoors);
+      EventUnit(const std::string& name, int capacity, bool indoors,const std::string& startTime = "", const std::string& endTime = "");
 
         /// Virtual Destructor
+        /// observer before destruction (see EventGroup::removeChild/~EventGroup).
         ~EventUnit() override{};
 
         void open() override;
@@ -59,13 +69,13 @@ class EventUnit:public EventComponent,public Observer{
         void update(const Notice& notice) override;
 
         
-        /// @return Whether this unit is currently paused
+        /// @return Whether this unit is currently paused (safety-suspended)
         bool isPaused() const{
             return isPaused_;
         }
 
         
-        /// @return Whether this unit is physically indoors
+        /// @return Whether this unit is physically indoors.
         bool isIndoors() const{
             return indoors_;
         }
@@ -86,8 +96,8 @@ class EventUnit:public EventComponent,public Observer{
         ///         shown by the default reportStatus() implementation.
         virtual std::string statusLine() const;
 
-        bool indoors_;
-        bool isPaused_=false;
-        int capacity_=0;
+        bool indoors_;              ///< Whether this unit is physically indoors.
+        bool isPaused_=false;       ///< Whether this unit is currently safety-paused.
+        int capacity_=0;            ///< Attendee capacity of this unit.
 }
 #endif

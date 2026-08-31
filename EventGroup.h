@@ -1,6 +1,7 @@
 /**
  * @file EventGroup.h
- * @brief The Composite participant of the GoF Composite pattern and a hybrid observer/subject in the observer pattern
+ * @brief The Composite participant of the GoF Composite pattern and a 
+ *        hybrid observer/subject in the observer pattern
  */
 
 #ifndef EVENTFLOW_EVENTGROUP_H
@@ -48,39 +49,58 @@
  */
 class EventGroup: public EventComponent, public Observer, public Subject{
     public:
-        /// @param name Display name of this group e.g. "Innovation Wing"
-        EventGroup(const std::string& name);
+        /**
+         * @param name Display name of this group (e.g. "Keynote Zone").
+         * @param startTime Scheduled start time for this group's programme,
+         *                  e.g. "09:00".
+         * @param endTime Scheduled end time for this group's programme.
+         */
 
-        // cascading delete
+        EventGroup(const std::string& name, const std::string& startTime = "",const std::string& endTime = "");
+
+        /// Destroys this group and, by explicitly `delete`-ing every pointer
+        /// in its owned children_ vector, its entire owned subtree exactly
+        /// once. Because every EventComponent in the tree is reachable
+        /// through exactly one owning EventGroup at a time (add()/
+        /// removeChild() maintain this invariant), no pointer is ever
+        /// deleted twice and nothing is ever leaked.
         ~EventGroup() override;
+
+
         void open() override;
         void close() override;
         void reportStatus(int indent=0) const override;
         int getCapacity() const override;
 
+        // --- Composite-specific structural operations ---------------------
         /**
-         * @brief adds a child to this group, taking ownership of it and automatically registers it as an observer.
-         * 
-         * @param child A pointer to the new child. Must not be null. Must not be already owned by another EventGroup.
+         * @brief Adds a child to this group, taking ownership of it, and
+         *        automatically registers it as an observer of this group.
+         * @param child Owning pointer to the new child. Must not be null,
+         *              and must not already be owned by another EventGroup
+         *              (use removeChild() on the current owner first if it
+         *              is being transferred -- see Task 4.2).
          */
         void add(EventComponent* child);
 
         /**
-        * @brief Removes a child from this group by pointer identity,
-        *        releasing ownership to the caller and detaching it as an observer of
-        *        this group.
-        *
-        * This is the operation used for runtime reorganisation
-        * the caller typically immediately adds the returned pointer to a
-        * different EventGroup, which re-establishes both ownership and
-        * observer registration in the new parent.
-        *
-        * @param child Raw pointer identifying which child to remove
-        *              (compared by address). Ownership passes to the
-        *              caller if found.
-        * @return The now-detached child, ready to be add()ed elsewhere, or
-        *         nullptr if child was not found among this group's children.
-        */
+         * @brief Removes a child from this group by pointer identity,
+         *        releasing ownership to the caller (the caller now becomes
+         *        responsible for either add()ing it to another EventGroup or
+         *        explicitly deleting it) and detaching it as an observer of
+         *        this group.
+         *
+         * This is the operation used for runtime reorganisation (Task 4.2):
+         * the caller typically immediately add()s the returned pointer to a
+         * different EventGroup, which re-establishes both ownership and
+         * observer registration in the new parent.
+         *
+         * @param child Raw pointer identifying which child to remove
+         *              (compared by address). Ownership passes to the
+         *              caller if found.
+         * @return The now-detached child, ready to be add()ed elsewhere, or
+         *         nullptr if child was not found among this group's children.
+         */
         EventComponent* removeChild(EventComponent* child);
 
         /// @return The number of direct children.
@@ -88,22 +108,44 @@ class EventGroup: public EventComponent, public Observer, public Subject{
             return children_.size();
         }
 
-        /// @param notice The notice pushed from a parent Subject.
+         // --- Observer (this group is notified from above) -----------------
+         /**
+          * @brief Reacts to a notice pushed from a parent Subject, then
+          *        cascades it to this group's own observers (its children).
+          *        This is the "receives from above, notifies below" behaviour
+          *        required by Task 3.4.
+          */
+         /// @param notice The notice pushed from a parent Subject.
         void update(const Notice& notice) override;
 
+        // --- Subject (this group is a Subject to its own children) --------
+        // attach()/detach()/notify() are inherited unchanged from Subject
+        // (see Subject.h); only Subject's pure virtual describeSubject()
+        // needs an override here.
         /// @return A short label identifying this group.
         std::string describeSubject() const override;
 
     protected:
         /**
          * @brief Self-reaction hook, analogous to EventUnit::reactToNotice
-         *         but for group-level state.
-         * @param notice The notice being reacted to. 
+         *        but for group-level state (kept separate from cascading in
+         *        notify()).
+         *
+         * Per the current notice-reaction policy (see README.md), EventGroup
+         * only reacts to: OPEN/CLOSE/EVACUATE (open/closed state -- required
+         * to affect *every* EventComponent), CAPACITY_ALERT (compares its
+         * own currentAttendance_ against capacityThreshold_ via the shared
+         * EventComponent::reportCapacityAlert() helper -- also required to
+         * affect every EventComponent), and ANNOUNCEMENT (a PA-style notice
+         * that, per policy, only ever affects EventGroups). PAUSE, RESUME,
+         * SCHEDULE_CHANGE and CANCEL are deliberately *not* handled here --
+         * those four only affect specific ConcreteLeaves, never a group.
+         * @param notice The notice being reacted to.
          */
         virtual void reactToNotice(const Notice& notice) override;
     
     private:
-        std::vector<EventComponent*> children_; ///< Own subtree
+        std::vector<EventComponent*> children_; ///< Owned subtree
 }
 
 #endif
