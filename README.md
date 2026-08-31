@@ -1,4 +1,4 @@
-# EventFlow -- TechConnect Conference
+# EventFlow - TechConnect Conference
 
 A reusable live-event coordination engine, implemented in C++11, built
 around the GoF **Composite** and **Observer** patterns.
