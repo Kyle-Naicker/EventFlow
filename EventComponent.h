@@ -2,8 +2,8 @@
  * @file EventComponent.h
  * @brief The Component participant of the GoF Composite pattern.
  */
-#ifndef EVENTFLOW_EVENTCOMPONENT_H
-#define EVENTFLOW_EVENTCOMPONENT_H
+#ifndef EVENTCOMPONENT_H
+#define EVENTCOMPONENT_H
 
 #include <string>
 

@@ -22,8 +22,8 @@
  * 
  */
 
-#ifndef EVENTFLOW_CONCRETELEAVES_H
-#define EVENTFLOW_CONCRETELEAVES_H
+#ifndef CONCRETELEAVES_H
+#define CONCRETELEAVES_H
 
 #include "EventUnit.h"
 

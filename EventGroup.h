@@ -4,8 +4,8 @@
  *        hybrid observer/subject in the observer pattern
  */
 
-#ifndef EVENTFLOW_EVENTGROUP_H
-#define EVENTFLOW_EVENTGROUP_H
+#ifndef EVENTGROUP_H
+#define EVENTGROUP_H
 
 #include <vector>
 #include "EventComponent.h"
@@ -142,7 +142,7 @@ class EventGroup: public EventComponent, public Observer, public Subject{
          * those four only affect specific ConcreteLeaves, never a group.
          * @param notice The notice being reacted to.
          */
-        virtual void reactToNotice(const Notice& notice) override;
+        virtual void reactToNotice(const Notice& notice);
     
     private:
         std::vector<EventComponent*> children_; ///< Owned subtree

@@ -4,8 +4,8 @@
  *        an Observer participant of Observer
  */
 
-#ifndef EVENTFLOW_EVENTUNIT_H
-#define EVENTFLOW_EVENTUNIT_H
+#ifndef EVENTUNIT_H
+#define EVENTUNIT_H
 
 #include "EventComponent.h"
 #include "Observer.h"
@@ -99,5 +99,5 @@ class EventUnit:public EventComponent,public Observer{
         bool indoors_;              ///< Whether this unit is physically indoors.
         bool isPaused_=false;       ///< Whether this unit is currently safety-paused.
         int capacity_=0;            ///< Attendee capacity of this unit.
-}
+};
 #endif
