@@ -1,0 +1,40 @@
+\doxysection{Notice.\+h}
+\hypertarget{Notice_8h_source}{}\label{Notice_8h_source}\mbox{\hyperlink{Notice_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ NOTICE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ NOTICE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{NoticeType}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa38bd5138bf35514df41a1795ebbf5c3}{OPEN}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a7286293c9125ac7d7bace94c190bc16d}{CLOSE}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a96103dabc0cfe5d03ac8ee954e9c9681}{SCHEDULE\_CHANGE}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570ab4cd9a992420b71906cceedcd95c97dd}{CAPACITY\_ALERT}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a291554596c183e837f0a6bec3767c891}{PAUSE}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570abac2aec3ee8d7d495123dbe5ca2fdac9}{RESUME}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a687903ab49b2b39547021636f5977a84}{EVACUATE}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570af35345ef1162f41f92f92cefa69b2ac3}{WEATHER\_ALERT}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a87a904ae5b928195946b208da732235c}{POWER\_OUTAGE}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a2027c027133e22c8929e2874dc44dd36}{CANCEL}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570aa9fe662f80887cbacf6776aab8e00965}{ANNOUNCEMENT}}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{Notice_8h_ad87aed36ebc360150eb6eef525b40634}{noticeTypeName}}(\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{NoticeType}}\ type);}
+\DoxyCodeLine{00044\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNotice}{Notice}}\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{NoticeType}}\ \mbox{\hyperlink{structNotice_ae2f875d6153cefbd8baaadcf4d6cdc88}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ std::string\ \mbox{\hyperlink{structNotice_ad07e4c63f849c0c960addcd2fd2276a2}{message}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNotice_ac315b892a2ed95b48d0410a542f9675c}{capacityThreshold}}\ =\ -\/1;\ \ \ \ \ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \mbox{\hyperlink{structNotice_aba4e7b1cf0b20a12a1f9736329412000}{newStartTime}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::string\ \mbox{\hyperlink{structNotice_a8beb6f01293998f0499d0e70ef932bf9}{newEndTime}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structNotice_a38ddbc4640546b325eb42aba16273f35}{Notice}}()\ :\ \mbox{\hyperlink{structNotice_ae2f875d6153cefbd8baaadcf4d6cdc88}{type}}(\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{NoticeType}}::\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570a96103dabc0cfe5d03ac8ee954e9c9681}{SCHEDULE\_CHANGE}}),\ \mbox{\hyperlink{structNotice_ad07e4c63f849c0c960addcd2fd2276a2}{message}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{structNotice_ac315b892a2ed95b48d0410a542f9675c}{capacityThreshold}}(-\/1)\{\}}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{structNotice_a5f5633653d012653e4b6a48f73ab9cf1}{Notice}}(\mbox{\hyperlink{Notice_8h_af363a9693a3fb910ac7c54199a89c570}{NoticeType}}\ t,\ \textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keywordtype}{int}\ threshold\ =\ -\/1,\ \textcolor{keyword}{const}\ std::string\&\ newStart\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ newEnd\ =\ \textcolor{stringliteral}{"{}"{}})\ :\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{structNotice_ae2f875d6153cefbd8baaadcf4d6cdc88}{type}}(t),\ \mbox{\hyperlink{structNotice_ad07e4c63f849c0c960addcd2fd2276a2}{message}}(msg),\ \mbox{\hyperlink{structNotice_ac315b892a2ed95b48d0410a542f9675c}{capacityThreshold}}(threshold),\ \mbox{\hyperlink{structNotice_aba4e7b1cf0b20a12a1f9736329412000}{newStartTime}}(newStart),\ \mbox{\hyperlink{structNotice_a8beb6f01293998f0499d0e70ef932bf9}{newEndTime}}(newEnd)\{\}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

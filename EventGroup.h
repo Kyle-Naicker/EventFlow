@@ -146,6 +146,6 @@ class EventGroup: public EventComponent, public Observer, public Subject{
     
     private:
         std::vector<EventComponent*> children_; ///< Owned subtree
-}
+};
 
 #endif

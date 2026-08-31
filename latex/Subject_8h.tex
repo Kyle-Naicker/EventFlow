@@ -1,0 +1,24 @@
+\doxysection{Subject.\+h File Reference}
+\hypertarget{Subject_8h}{}\label{Subject_8h}\index{Subject.h@{Subject.h}}
+
+
+The \doxylink{classSubject}{Subject} participant of the \doxylink{classObserver}{Observer} pattern.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}Observer.\+h"{}}\newline
+{\ttfamily \#include "{}Notice.\+h"{}}\newline
+Include dependency graph for Subject.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSubject}{Subject}}
+\begin{DoxyCompactList}\small\item\em Abstruct \doxylink{classSubject}{Subject} with shared, reusable implementation \doxylink{classSubject}{Subject} is not made purley abstract because attact/detach/notify have a single implementation that every concrete \doxylink{classSubject}{Subject} in Event\+Flow wants to reuse. Subclasses can still override \doxylink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classSubject}{Subject} participant of the \doxylink{classObserver}{Observer} pattern. 
+

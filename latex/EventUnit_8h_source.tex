@@ -1,0 +1,48 @@
+\doxysection{Event\+Unit.\+h}
+\hypertarget{EventUnit_8h_source}{}\label{EventUnit_8h_source}\mbox{\hyperlink{EventUnit_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ EVENTUNIT\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ EVENTUNIT\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventComponent_8h}{EventComponent.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Observer_8h}{Observer.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Notice_8h}{Notice.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventUnit}{EventUnit}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classEventComponent}{EventComponent}},\textcolor{keyword}{public}\ \mbox{\hyperlink{classObserver}{Observer}}\{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \mbox{\hyperlink{classEventUnit}{EventUnit}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{bool}\ indoors,\textcolor{keyword}{const}\ std::string\&\ startTime\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ endTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventUnit_aed9ac90e0e65a6514dfbfa5dffc2f6bb}{\string~EventUnit}}()\textcolor{keyword}{\ override}\{\};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventUnit_a81f5a7173a14a8957da8840eb3e772bc}{open}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventUnit_a963e4e7f3e1d0b14c68077e3bcae7f78}{close}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventUnit_a2cfc37c341e37338914ae29d4f2ee14a}{reportStatus}}(\textcolor{keywordtype}{int}\ index=0)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventUnit_a18d25238a699c90ff6126e5ea860901b}{getCapacity}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174}{update}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventUnit_a46e96b8f444ab2cc0a5d07b80cdf8bd2}{isPaused}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventUnit_ae3efa141deac3f75757edd1ec185c38e}{isPaused\_}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventUnit_a68dea8651bc1af23c8754fd727f315f2}{isIndoors}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventUnit_ac5cb6381613bb3ebb6e7b4115b331c20}{indoors\_}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventUnit_a896e33682a4c96fbcc970e807f5846bd}{reactToNotice}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice)=0;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classEventUnit_a43cb0ea476ae1e464ef9db1a4249fb92}{statusLine}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventUnit_ac5cb6381613bb3ebb6e7b4115b331c20}{indoors\_}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEventUnit_ae3efa141deac3f75757edd1ec185c38e}{isPaused\_}}=\textcolor{keyword}{false};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventUnit_ae8d8de453f6ed278be9a936ffc6994c6}{capacity\_}}=0;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,28 @@
+\doxysection{Subject.\+h}
+\hypertarget{Subject_8h_source}{}\label{Subject_8h_source}\mbox{\hyperlink{Subject_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SUBJECT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SUBJECT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Observer_8h}{Observer.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Notice_8h}{Notice.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSubject}{Subject}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSubject_ae5980067d5ec5522db5a0d78100a34be}{\string~Subject}}()\ \{\}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSubject_a0884bfe374d352c6488a1e40c84246c8}{attach}}(\mbox{\hyperlink{classObserver}{Observer}}*\ observer);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSubject_a752a7596d52ab986539232f8377ca92c}{detach}}(\mbox{\hyperlink{classObserver}{Observer}}*\ observer);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSubject_ab5b0a79cd1214e08f11dbe18611e8f8c}{notify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structNotice}{Notice}}\&\ notice);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classSubject_ae5f200b9226c9e7081e0cb38f70fcf6b}{observerCount}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSubject_a862ab5ebcc13c62ef2a48b3cbf2abf88}{observers\_}}.size();\}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classSubject_aa97c522806c5dade8fdbf0e0bc51e3f9}{describeSubject}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::vector<Observer*>\ \mbox{\hyperlink{classSubject_a862ab5ebcc13c62ef2a48b3cbf2abf88}{observers\_}};}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

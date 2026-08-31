@@ -1,0 +1,55 @@
+\doxysection{Observer Class Reference}
+\hypertarget{classObserver}{}\label{classObserver}\index{Observer@{Observer}}
+
+
+Abstract \doxylink{classObserver}{Observer} role.  
+
+
+
+
+{\ttfamily \#include $<$Observer.\+h$>$}
+
+
+
+Inheritance diagram for Observer\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classObserver_afcc6b67be6c386f2f3d2c363aa59cb47}\label{classObserver_afcc6b67be6c386f2f3d2c363aa59cb47} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Observer} ()
+\begin{DoxyCompactList}\small\item\em Vitual destructor for a polymorphic base. Observers do not own. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0}{update}} (const \mbox{\hyperlink{structNotice}{Notice}} \&notice)=0
+\begin{DoxyCompactList}\small\item\em Called by a \doxylink{classSubject}{Subject} to push a notice to this \doxylink{classObserver}{Observer}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract \doxylink{classObserver}{Observer} role. 
+
+Event\+Flow uses a push model, so \doxylink{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0}{update()} receives the full \doxylink{structNotice}{Notice} rather than having to query the subject afterwards. Ownership\+: Subjects store observer as \textquotesingle{}non-\/owning\textquotesingle{} raw pointers, therefore observer\textquotesingle{}s lifetime is managed elsewhere. An \doxylink{classObserver}{Observer} must detach itself before its destroyed. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0}\label{classObserver_a1facbbd0e34f6034d183ae9bcabbf1b0} 
+\index{Observer@{Observer}!update@{update}}
+\index{update@{update}!Observer@{Observer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Observer\+::update (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNotice}{Notice}} \&}]{notice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Called by a \doxylink{classSubject}{Subject} to push a notice to this \doxylink{classObserver}{Observer}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notice} & The notice being broadcast. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classEventGroup_a49dd237deffcde74961175a84a7c0256}{Event\+Group}}, and \mbox{\hyperlink{classEventUnit_abfb9f5974cebf0330bfa0a4536b56174}{Event\+Unit}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Observer_8h}{Observer.\+h}}\end{DoxyCompactItemize}
