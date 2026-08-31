@@ -19,8 +19,6 @@ valgrind: $(TARGET)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
 
 docs:
-  doxygen -g
-  nano Doxyfile
 	doxygen Doxyfile
 
 clean:
